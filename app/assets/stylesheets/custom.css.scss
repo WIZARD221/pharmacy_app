@@ -1,0 +1,14 @@
+@import "bootstrap";
+
+/*header*/
+header {
+	background-color: black;
+	.navbar-inner{
+		background-image: linear-gradient(to bottom, #00CC00, #009933);
+	}
+
+}
+
+#logo{
+	color: white;
+}
