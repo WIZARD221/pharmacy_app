@@ -130,6 +130,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 3.2)
   jquery-rails
+  nokogiri
   rails (= 3.2.13)
   rspec-rails
   sass-rails (~> 3.2)

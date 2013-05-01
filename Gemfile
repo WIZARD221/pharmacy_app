@@ -10,6 +10,7 @@ gem 'bootstrap-sass'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'nokogiri'
 end
 
 
