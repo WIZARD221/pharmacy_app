@@ -1,3 +1,9 @@
-<div class="row">
-	<%=form_for(drug) %>
+<div class="row" id="search_form">
+	<div class="span 6">
+		<%= form_tag("/search", :method => "get") do %>
+		  <%= label_tag(:q, "Search for:") %>
+		  <%= text_field_tag(:q) %>
+		  <%= submit_tag("Search") %>
+		<% end %>
+	</div>
 </div>

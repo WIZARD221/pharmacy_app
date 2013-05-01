@@ -1,6 +1,10 @@
 class StaticPagesController < ApplicationController
 	
 	def home
-	  drug = Drug.new
 	end
+	
+	def search
+	  
+	end
+	  
 end
