@@ -1,9 +1,9 @@
-<div class="row" id="search_form">
-	<div class="span 6">
-		<%= form_tag("/search", :method => "get") do %>
-		  <%= label_tag(:q, "Search for:") %>
-		  <%= text_field_tag(:q) %>
-		  <%= submit_tag("Search") %>
+<div class="container" id="search_form">
+	<div class="span6 offset4">
+		<%= form_tag("/drugs", :method => "get", :class => "form-search") do %>
+		  <%= label_tag(:q, "Search for drug:") %>
+		  <%= text_field_tag(:q, nil, :class => "input-large search-query") %>
+		  <%= submit_tag("Search", :class => "search-btn") %>
 		<% end %>
 	</div>
 </div>

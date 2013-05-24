@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		<%= render 'layouts/header' %>
+		<%= render 'shared/search_form'%>
 		<%= yield %>
 		<%= debug(params) if Rails.env.development? %>
 	</body>

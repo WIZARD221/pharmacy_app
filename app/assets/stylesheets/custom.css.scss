@@ -16,3 +16,14 @@ header {
 #search_form{
   margin-left: 44px;
 }
+
+.drugs{
+  @extend .table;
+  @extend .table-bordered;
+  @extend .table-striped;
+  @extend .table-condensed;
+}
+
+.search-btn{
+  @extend .btn;
+}
