@@ -3,7 +3,7 @@ PharmacyApp::Application.routes.draw do
   match '/search',    to: 'static_pages#search'
   # match '/search',    to: 'drugs#search'
 
-  root to:'static_pages#home'
+  root to:'drugs#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

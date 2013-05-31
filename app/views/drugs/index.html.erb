@@ -1,7 +1,8 @@
 <% provide(:title, "Pharmacy Home")%>
+<%= javascript_include_tag "drugs/drugs" %>
 <div class="container">
-	<table class="drugs">
-		<tr>
+	<table class="drugs" id="drug_table">
+		<thead>
 			<th>Name</th>
 			<th>Form</th>
 			<th>Conditions</th>
@@ -9,7 +10,9 @@
 			<th>30 Day Quantity</th>
 			<th>90 Day Price</th>
 			<th>90 Day Quantity</th>
-		</tr>
-		<%=render @drugs%>
+		</thead>
+		<tbody>
+			<%=render @drugs%>
+		</tbody>
 	</table>
 </div>
