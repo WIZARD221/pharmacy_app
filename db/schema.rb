@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424145357) do
+ActiveRecord::Schema.define(:version => 20130527170708) do
 
   create_table "drugs", :force => true do |t|
     t.string   "generic_name"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(:version => 20130424145357) do
     t.integer  "ninety_day_quantity"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "drugs_stores", :id => false, :force => true do |t|
+    t.integer "drug_id"
+    t.integer "store_id"
+  end
+
+  add_index "drugs_stores", ["drug_id", "store_id"], :name => "index_drugs_stores_on_drug_id_and_store_id"
+
+  create_table "stores", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
