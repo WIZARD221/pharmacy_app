@@ -11,19 +11,65 @@ header {
 
 #logo{
 	color: white;
+	margin-left: 300px;
+	
 }
 
 #search_form{
   margin-left: 44px;
 }
+/*drug data table*/
 
-.drugs{
+#drug_table{
   @extend .table;
   @extend .table-bordered;
   @extend .table-striped;
   @extend .table-condensed;
+  
+}
+div.dataTables_filter{
+  
+  display:inline-block;
+  input{
+    @extend .search-query;
+    @extend .input-long; 
+  }
 }
 
-.search-btn{
+div.dataTables_length{
+  @extend .offset1;
+  display:inline-block;
+  select{
+    border-radius: 15px 15px 15px 15px;
+    width: auto;
+  }
+}
+
+#drug_table_previous{
+  @extend .btn; 
+}
+
+#drug_table_next{
   @extend .btn;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

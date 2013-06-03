@@ -1,0 +1,13 @@
+%tr
+  %td= link_to drug.generic_name, drug
+  %td= drug.form
+  %td= drug.conditions
+  %td= drug.thirty_day_price
+  %td= drug.thirty_day_quantity
+  %td= drug.ninety_day_price
+  %td= drug.ninety_day_quantity
+  %td
+    - drug.stores.each do |store|
+      %p= store.name
+      
+    
