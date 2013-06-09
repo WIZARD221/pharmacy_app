@@ -1,13 +1,17 @@
-%tr
-  %td= link_to drug.generic_name, drug
-  %td= drug.form
-  %td= drug.conditions
-  %td= drug.thirty_day_price
-  %td= drug.thirty_day_quantity
-  %td= drug.ninety_day_price
-  %td= drug.ninety_day_quantity
-  %td
+%tr{:id => "drug#{drug.id}"}
+  %td.name= link_to drug.generic_name, drug
+  %td.form= drug.form
+  %td.conditions= drug.conditions
+  %td.thirty_day_price= drug.thirty_day_price
+  %td.thirty_day_quantity= drug.thirty_day_quantity
+  %td.ninety_day_price= drug.ninety_day_price
+  %td.ninety_day_quantity= drug.ninety_day_quantity
+  %td.stores
     - drug.stores.each do |store|
-      %p= store.name
-      
+      .store-btns{id: "#{drug.id}", class: "#{store.name}"}
+        %button{:class => "#{store.name}", :id => "#{drug.id}",:onClick => "addToCart(this.id, this.innerHTML)"}= store.name
+        .btn-group
+          %button.duration{:class => "#{store.name}",:onClick => "addToCart(#{drug.id}, this.innerHTML)"} 30 Day
+          %button.duration{:class => "#{store.name}",:onClick => "addToCart(#{drug.id}, this.innerHTML)"} 90 Day
+    
     

@@ -1,19 +1,25 @@
 <% provide(:title, "Pharmacy Home")%>
 <%= javascript_include_tag "drugs/drugs" %>
-<div class="container">
-	<table id="drug_table">
-		<thead>
-			<th>Name</th>
-			<th>Form</th>
-			<th>Conditions</th>
-			<th>30 Day Price</th>
-			<th>30 Day Quantity</th>
-			<th>90 Day Price</th>
-			<th>90 Day Quantity</th>
-			<th>Stores</th>
-		</thead>
-		<tbody>
-			<%=render @drugs%>
-		</tbody>
-	</table>
+<%= javascript_include_tag "drugs/shopping_cart" %>
+
+<div class="container-fluid">
+	<div class="span12 offset3">
+		<table id="drug_table">
+			<thead>
+				<th>Name</th>
+				<th>Form</th>
+				<th>Conditions</th>
+				<th>30 Day Price</th>
+				<th>30 Day Quantity</th>
+				<th>90 Day Price</th>
+				<th>90 Day Quantity</th>
+				<th id="stores_col">Stores</th>
+			</thead>
+			<tbody>
+				<%=render @drugs%>
+			</tbody>
+		</table>
+	</div>
+	<%=render "shopping_cart"%>
 </div>
+

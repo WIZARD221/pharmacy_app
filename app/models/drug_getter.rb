@@ -6,7 +6,7 @@ require_relative 'drug'
 require_relative 'store'
 
 class DrugGetter 
-  
+    
   def getDrugsTarget
     doc = Nokogiri::HTML(open("http://www.target.com/pharmacy/generics-condition"))
     pharmTable = doc.css("td.pharmtable tr")
@@ -290,16 +290,14 @@ class DrugGetter
     getDrugsWalmart
   end
   
-  # dg = DrugGetter.new
-  # dg.getDrugsTarget
-#   
-#   
-  
-  
-  
-  
-  
-  
-  
   
 end
+
+  dg = DrugGetter.new
+  # dg.getDrugsTarget
+  puts dg.yair
+  
+
+
+
+

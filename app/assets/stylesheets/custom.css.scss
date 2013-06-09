@@ -11,13 +11,14 @@ header {
 
 #logo{
 	color: white;
-	margin-left: 300px;
+	margin-left: 256px;
 	
 }
 
 #search_form{
   margin-left: 44px;
 }
+
 /*drug data table*/
 
 #drug_table{
@@ -55,6 +56,53 @@ div.dataTables_length{
 
 
 
+#stores_col{
+  width: 100px;
+}
+
+
+
+.store-btns{
+  button.Walmart{
+  @extend .btn, .btn-primary;
+  width: 95px;
+  }
+
+  button.Target{
+    @extend .btn, .btn-danger;
+    width: 95px;
+  }
+  button.duration{
+    width:50px;
+  }
+}
+
+/*shopping cart*/
+
+#shopping_cart{
+  position: fixed;
+  background:#fff4c8;
+  border:2px solid #ffcc00;
+  width:260px;
+  display:block;
+  margin:3em 0.5em;
+  
+  h5{
+    display: inline;
+  }
+  
+  p#num_items{
+    display: inline;
+    font-size: 12px;
+  }
+  span{
+    
+  }
+}
+
+.hidden{
+  display: none;
+}
 
 
 
