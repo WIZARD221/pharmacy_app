@@ -6,6 +6,7 @@ gem 'bootstrap-sass'
 gem 'haml'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'nokogiri'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,7 +14,6 @@ gem 'bootstrap-will_paginate'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
-  gem 'nokogiri'
   gem 'pdf-reader'
 end
 
