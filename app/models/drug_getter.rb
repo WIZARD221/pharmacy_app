@@ -293,9 +293,6 @@ class DrugGetter
   
 end
 
-  dg = DrugGetter.new
-  # dg.getDrugsTarget
-  puts dg.yair
   
 
 
