@@ -27,6 +27,10 @@ header {
   @extend .table-striped;
   @extend .table-condensed;
   
+  td{
+    border-top: 3px solid #DDDDDD;
+  }
+  
 }
 div.dataTables_filter{
   
@@ -65,14 +69,15 @@ div.dataTables_length{
 .store-btns{
   button.Walmart{
   @extend .btn, .btn-primary;
-  width: 95px;
+  width: 100px;
   }
 
   button.Target{
     @extend .btn, .btn-danger;
-    width: 95px;
+    width: 100px;
   }
   button.duration{
+    @extend .hidden;
     width:50px;
   }
 }
@@ -90,14 +95,31 @@ div.dataTables_length{
   h5{
     display: inline;
   }
+  p.Walmart{
+    color: blue;
+    display: inline;
+  }
+  p.Target{
+    color: red;
+    display: inline;
+  }
   
   p#num_items{
     display: inline;
     font-size: 12px;
   }
-  span{
-    
+  p.num-items{
+    display: inline;
+    font-size: 12px;
   }
+  
+  p#checkout{
+    display: inline;
+  }
+  p#checkout_sum{
+    display: inline;
+  }
+  
 }
 
 .hidden{

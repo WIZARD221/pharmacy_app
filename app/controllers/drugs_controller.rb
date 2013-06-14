@@ -7,7 +7,7 @@ class DrugsController < ApplicationController
   end
   
   def index
-    @drugs = Drug.all
+    @drugs = Drug.all(:include => :stores)
   end
   
   def show

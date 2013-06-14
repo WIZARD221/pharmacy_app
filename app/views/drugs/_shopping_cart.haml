@@ -2,7 +2,19 @@
   #shopping_cart 
     %h5#cart_items Shopping Cart Items:
     %p#num_items empty
+    %table.head
+      %thead
+        %th Name
+        %th Quantity
+        %th Price
+    %p.Walmart.hidden Walmart Items:
+    %p.num-items.Walmart.hidden
     %table.Walmart
+    %p.Target.hidden Target Items:
+    %p.num-items.Target.hidden
     %table.Target
+    %p#checkout Total Price:
+    %p#checkout_sum 0
+    %button#print Print
   
   
