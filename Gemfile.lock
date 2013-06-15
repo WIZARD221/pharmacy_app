@@ -154,9 +154,9 @@ DEPENDENCIES
   nokogiri
   pdf-reader
   pg
-  rails (= 3.2.13)
+  rails
   rspec-rails
-  sass-rails (~> 3.2)
+  sass-rails
   sqlite3
   uglifier (>= 1.0.3)
   will_paginate
