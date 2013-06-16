@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=IBM862" http-equiv="Content-Type">
+
+<title>class Heroku::Command::Keys - heroku-2.39.4 Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/heroku/command/keys.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Base.html">Heroku::Command::Base</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-add">#add</a>
+    
+    <li><a href="#method-i-clear">#clear</a>
+    
+    <li><a href="#method-i-format_key_for_display">#format_key_for_display</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-remove">#remove</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Heroku.html">Heroku</a>
+  
+    <li><a href="../../Heroku/Auth.html">Heroku::Auth</a>
+  
+    <li><a href="../../Heroku/CLI.html">Heroku::CLI</a>
+  
+    <li><a href="../../Heroku/Client.html">Heroku::Client</a>
+  
+    <li><a href="../../Heroku/Client/AppCrashed.html">Heroku::Client::AppCrashed</a>
+  
+    <li><a href="../../Heroku/Client/Cisaurus.html">Heroku::Client::Cisaurus</a>
+  
+    <li><a href="../../Heroku/Client/ConsoleSession.html">Heroku::Client::ConsoleSession</a>
+  
+    <li><a href="../../Heroku/Client/HerokuPostgresql.html">Heroku::Client::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Client/JSON.html">Heroku::Client::JSON</a>
+  
+    <li><a href="../../Heroku/Client/Pgbackups.html">Heroku::Client::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Client/Rendezvous.html">Heroku::Client::Rendezvous</a>
+  
+    <li><a href="../../Heroku/Client/Service.html">Heroku::Client::Service</a>
+  
+    <li><a href="../../Heroku/Command.html">Heroku::Command</a>
+  
+    <li><a href="../../Heroku/Command/Account.html">Heroku::Command::Account</a>
+  
+    <li><a href="../../Heroku/Command/Accounts.html">Heroku::Command::Accounts</a>
+  
+    <li><a href="../../Heroku/Command/Addons.html">Heroku::Command::Addons</a>
+  
+    <li><a href="../../Heroku/Command/Apps.html">Heroku::Command::Apps</a>
+  
+    <li><a href="../../Heroku/Command/Auth.html">Heroku::Command::Auth</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::Base</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::BaseWithApp</a>
+  
+    <li><a href="../../Heroku/Command/Certs.html">Heroku::Command::Certs</a>
+  
+    <li><a href="../../Heroku/Command/Certs/UsageError.html">Heroku::Command::Certs::UsageError</a>
+  
+    <li><a href="../../Heroku/Command/CommandFailed.html">Heroku::Command::CommandFailed</a>
+  
+    <li><a href="../../Heroku/Command/Config.html">Heroku::Command::Config</a>
+  
+    <li><a href="../../Heroku/Command/Db.html">Heroku::Command::Db</a>
+  
+    <li><a href="../../Heroku/Command/Domains.html">Heroku::Command::Domains</a>
+  
+    <li><a href="../../Heroku/Command/Drains.html">Heroku::Command::Drains</a>
+  
+    <li><a href="../../Heroku/Command/Fork.html">Heroku::Command::Fork</a>
+  
+    <li><a href="../../Heroku/Command/Git.html">Heroku::Command::Git</a>
+  
+    <li><a href="../../Heroku/Command/Help.html">Heroku::Command::Help</a>
+  
+    <li><a href="../../Heroku/Command/Keys.html">Heroku::Command::Keys</a>
+  
+    <li><a href="../../Heroku/Command/Labs.html">Heroku::Command::Labs</a>
+  
+    <li><a href="../../Heroku/Command/Logs.html">Heroku::Command::Logs</a>
+  
+    <li><a href="../../Heroku/Command/Maintenance.html">Heroku::Command::Maintenance</a>
+  
+    <li><a href="../../Heroku/Command/Pg.html">Heroku::Command::Pg</a>
+  
+    <li><a href="../../Heroku/Command/Pgbackups.html">Heroku::Command::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Command/Plugins.html">Heroku::Command::Plugins</a>
+  
+    <li><a href="../../Heroku/Command/Ps.html">Heroku::Command::Ps</a>
+  
+    <li><a href="../../Heroku/Command/Regions.html">Heroku::Command::Regions</a>
+  
+    <li><a href="../../Heroku/Command/Releases.html">Heroku::Command::Releases</a>
+  
+    <li><a href="../../Heroku/Command/Run.html">Heroku::Command::Run</a>
+  
+    <li><a href="../../Heroku/Command/Sharing.html">Heroku::Command::Sharing</a>
+  
+    <li><a href="../../Heroku/Command/Ssl.html">Heroku::Command::Ssl</a>
+  
+    <li><a href="../../Heroku/Command/Stack.html">Heroku::Command::Stack</a>
+  
+    <li><a href="../../Heroku/Command/Status.html">Heroku::Command::Status</a>
+  
+    <li><a href="../../Heroku/Command/Update.html">Heroku::Command::Update</a>
+  
+    <li><a href="../../Heroku/Command/Version.html">Heroku::Command::Version</a>
+  
+    <li><a href="../../Heroku/Deprecated.html">Heroku::Deprecated</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help.html">Heroku::Deprecated::Help</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/ClassMethods.html">Heroku::Deprecated::Help::ClassMethods</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/HelpGroup.html">Heroku::Deprecated::Help::HelpGroup</a>
+  
+    <li><a href="../../Heroku/Distribution.html">Heroku::Distribution</a>
+  
+    <li><a href="../../Heroku/Helpers.html">Heroku::Helpers</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql.html">Heroku::Helpers::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql/Attachment.html">Heroku::Helpers::HerokuPostgresql::Attachment</a>
+  
+    <li><a href="../../Heroku/Helpers/LogDisplayer.html">Heroku::Helpers::LogDisplayer</a>
+  
+    <li><a href="../../Heroku/OkJson.html">Heroku::OkJson</a>
+  
+    <li><a href="../../Heroku/OkJson/Error.html">Heroku::OkJson::Error</a>
+  
+    <li><a href="../../Heroku/OkJson/Utf8Error.html">Heroku::OkJson::Utf8Error</a>
+  
+    <li><a href="../../Heroku/Plugin.html">Heroku::Plugin</a>
+  
+    <li><a href="../../Heroku/Plugin/ErrorUpdatingSymlinkPlugin.html">Heroku::Plugin::ErrorUpdatingSymlinkPlugin</a>
+  
+    <li><a href="../../Heroku/Updater.html">Heroku::Updater</a>
+  
+    <li><a href="../../HerokuPostgresql.html">HerokuPostgresql</a>
+  
+    <li><a href="../../HerokuPostgresql/Client.html">HerokuPostgresql::Client</a>
+  
+    <li><a href="../../Pgbackups.html">Pgbackups</a>
+  
+    <li><a href="../../Pgbackups/Client.html">Pgbackups::Client</a>
+  
+    <li><a href="../../Excon.html">Excon</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Heroku::Command::Keys</h1>
+
+  <div id="description" class="description">
+    
+<p>manage authentication keys</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-add" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>keys:add [KEY]
+
+add a key for the current user
+
+if no KEY is specified, will try to find ~/.ssh/id_[rd]sa.pub</pre>
+
+<p>Examples:</p>
+
+<pre>$ heroku keys:add
+Could not find an existing public key.
+Would you like to generate one? [Yn] y
+Generating new SSH public key.
+Uploading SSH public key /.ssh/id_rsa.pub... done
+
+$ heroku keys:add /my/key.pub
+Uploading SSH public key /my/key.pub... done</pre>
+          
+
+          
+          <div class="method-source-code" id="add-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/keys.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add</span>
+  <span class="ruby-identifier">keyfile</span> = <span class="ruby-identifier">shift_argument</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">keyfile</span>
+    <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">associate_key</span>(<span class="ruby-identifier">keyfile</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># make sure we have credentials</span>
+    <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">get_credentials</span>
+    <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">associate_or_generate_ssh_key</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add-method -->
+
+    
+      <div id="method-i-clear" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clear</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>keys:clear
+
+remove all authentication keys from the current user</pre>
+
+<p>Examples:</p>
+
+<pre>$ heroku keys:clear
+Removing all SSH keys... done</pre>
+          
+
+          
+          <div class="method-source-code" id="clear-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/keys.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clear</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+
+  <span class="ruby-identifier">action</span>(<span class="ruby-string">&quot;Removing all SSH keys&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">api</span>.<span class="ruby-identifier">delete_keys</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- clear-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- clear-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>keys
+
+display keys for the current user
+
+-l, --long  # display extended information for each key</pre>
+
+<p>Examples:</p>
+
+<pre>$ heroku keys
+=== email@example.com Keys
+ssh-rsa ABCDEFGHIJK...OPQRSTUV== email@example.com
+
+$ heroku keys --long
+=== email@example.com Keys
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAp9AJD5QABmOcrkHm6SINuQkDefaR0MUrfgZ1Pxir3a4fM1fwa00dsUwbUaRuR7FEFD8n1E9WwDf8SwQTHtyZsJg09G9myNqUzkYXCmydN7oGr5IdVhRyv5ixcdiE0hj7dRnOJg2poSQ3Qi+Ka8SVJzF7nIw1YhuicHPSbNIFKi5s0D5a+nZb/E6MNGvhxoFCQX2IcNxaJMqhzy1ESwlixz45aT72mXYq0LIxTTpoTqma1HuKdRY8HxoREiivjmMQulYP+CxXFcMyV9kxTKIUZ/FXqlC6G5vSm3J4YScSatPOj9ID5HowpdlIx8F6y4p1/28r2tTl4CY40FFyoke4MQ== email@example.com</pre>
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/keys.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+  <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">api</span>.<span class="ruby-identifier">get_keys</span>.<span class="ruby-identifier">body</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">styled_header</span>(<span class="ruby-node">&quot;#{Heroku::Auth.user} Keys&quot;</span>)
+    <span class="ruby-identifier">keys</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:long</span>]
+      <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">key</span>[<span class="ruby-string">&quot;contents&quot;</span>].<span class="ruby-identifier">strip</span>}
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format_key_for_display</span>(<span class="ruby-identifier">key</span>[<span class="ruby-string">&quot;contents&quot;</span>])}
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">styled_array</span>(<span class="ruby-identifier">keys</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">display</span>(<span class="ruby-string">&quot;You have no keys.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-remove" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>keys:remove KEY
+
+remove a key from the current user</pre>
+
+<p>Examples:</p>
+
+<pre>$ heroku keys:remove email@example.com
+Removing email@example.com SSH key... done</pre>
+          
+
+          
+          <div class="method-source-code" id="remove-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/keys.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove</span>
+  <span class="ruby-identifier">key</span> = <span class="ruby-identifier">shift_argument</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;Usage: heroku keys:remove KEY\nMust specify KEY to remove.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+
+  <span class="ruby-identifier">action</span>(<span class="ruby-node">&quot;Removing #{key} SSH key&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">api</span>.<span class="ruby-identifier">delete_key</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Protected Instance Methods</h3>
+
+    
+      <div id="method-i-format_key_for_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">format_key_for_display</span><span
+            class="method-args">(key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="format_key_for_display-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/keys.rb, line 110</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">format_key_for_display</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-identifier">type</span>, <span class="ruby-identifier">hex</span>, <span class="ruby-identifier">local</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">/\s/</span>)
+  [<span class="ruby-identifier">type</span>, <span class="ruby-identifier">hex</span>[<span class="ruby-value">0</span>,<span class="ruby-value">10</span>] <span class="ruby-operator">+</span> <span class="ruby-string">'...'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">hex</span>[<span class="ruby-value">-10</span>,<span class="ruby-value">10</span>], <span class="ruby-identifier">local</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- format_key_for_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- format_key_for_display-method -->
+
+    
+    </section><!-- protected-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

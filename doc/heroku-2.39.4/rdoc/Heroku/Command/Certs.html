@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=IBM862" http-equiv="Content-Type">
+
+<title>class Heroku::Command::Certs - heroku-2.39.4 Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/heroku/command/certs.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Base.html">Heroku::Command::Base</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-add">#add</a>
+    
+    <li><a href="#method-i-chain">#chain</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-info">#info</a>
+    
+    <li><a href="#method-i-key">#key</a>
+    
+    <li><a href="#method-i-remove">#remove</a>
+    
+    <li><a href="#method-i-rollback">#rollback</a>
+    
+    <li><a href="#method-i-update">#update</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Heroku.html">Heroku</a>
+  
+    <li><a href="../../Heroku/Auth.html">Heroku::Auth</a>
+  
+    <li><a href="../../Heroku/CLI.html">Heroku::CLI</a>
+  
+    <li><a href="../../Heroku/Client.html">Heroku::Client</a>
+  
+    <li><a href="../../Heroku/Client/AppCrashed.html">Heroku::Client::AppCrashed</a>
+  
+    <li><a href="../../Heroku/Client/Cisaurus.html">Heroku::Client::Cisaurus</a>
+  
+    <li><a href="../../Heroku/Client/ConsoleSession.html">Heroku::Client::ConsoleSession</a>
+  
+    <li><a href="../../Heroku/Client/HerokuPostgresql.html">Heroku::Client::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Client/JSON.html">Heroku::Client::JSON</a>
+  
+    <li><a href="../../Heroku/Client/Pgbackups.html">Heroku::Client::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Client/Rendezvous.html">Heroku::Client::Rendezvous</a>
+  
+    <li><a href="../../Heroku/Client/Service.html">Heroku::Client::Service</a>
+  
+    <li><a href="../../Heroku/Command.html">Heroku::Command</a>
+  
+    <li><a href="../../Heroku/Command/Account.html">Heroku::Command::Account</a>
+  
+    <li><a href="../../Heroku/Command/Accounts.html">Heroku::Command::Accounts</a>
+  
+    <li><a href="../../Heroku/Command/Addons.html">Heroku::Command::Addons</a>
+  
+    <li><a href="../../Heroku/Command/Apps.html">Heroku::Command::Apps</a>
+  
+    <li><a href="../../Heroku/Command/Auth.html">Heroku::Command::Auth</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::Base</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::BaseWithApp</a>
+  
+    <li><a href="../../Heroku/Command/Certs.html">Heroku::Command::Certs</a>
+  
+    <li><a href="../../Heroku/Command/Certs/UsageError.html">Heroku::Command::Certs::UsageError</a>
+  
+    <li><a href="../../Heroku/Command/CommandFailed.html">Heroku::Command::CommandFailed</a>
+  
+    <li><a href="../../Heroku/Command/Config.html">Heroku::Command::Config</a>
+  
+    <li><a href="../../Heroku/Command/Db.html">Heroku::Command::Db</a>
+  
+    <li><a href="../../Heroku/Command/Domains.html">Heroku::Command::Domains</a>
+  
+    <li><a href="../../Heroku/Command/Drains.html">Heroku::Command::Drains</a>
+  
+    <li><a href="../../Heroku/Command/Fork.html">Heroku::Command::Fork</a>
+  
+    <li><a href="../../Heroku/Command/Git.html">Heroku::Command::Git</a>
+  
+    <li><a href="../../Heroku/Command/Help.html">Heroku::Command::Help</a>
+  
+    <li><a href="../../Heroku/Command/Keys.html">Heroku::Command::Keys</a>
+  
+    <li><a href="../../Heroku/Command/Labs.html">Heroku::Command::Labs</a>
+  
+    <li><a href="../../Heroku/Command/Logs.html">Heroku::Command::Logs</a>
+  
+    <li><a href="../../Heroku/Command/Maintenance.html">Heroku::Command::Maintenance</a>
+  
+    <li><a href="../../Heroku/Command/Pg.html">Heroku::Command::Pg</a>
+  
+    <li><a href="../../Heroku/Command/Pgbackups.html">Heroku::Command::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Command/Plugins.html">Heroku::Command::Plugins</a>
+  
+    <li><a href="../../Heroku/Command/Ps.html">Heroku::Command::Ps</a>
+  
+    <li><a href="../../Heroku/Command/Regions.html">Heroku::Command::Regions</a>
+  
+    <li><a href="../../Heroku/Command/Releases.html">Heroku::Command::Releases</a>
+  
+    <li><a href="../../Heroku/Command/Run.html">Heroku::Command::Run</a>
+  
+    <li><a href="../../Heroku/Command/Sharing.html">Heroku::Command::Sharing</a>
+  
+    <li><a href="../../Heroku/Command/Ssl.html">Heroku::Command::Ssl</a>
+  
+    <li><a href="../../Heroku/Command/Stack.html">Heroku::Command::Stack</a>
+  
+    <li><a href="../../Heroku/Command/Status.html">Heroku::Command::Status</a>
+  
+    <li><a href="../../Heroku/Command/Update.html">Heroku::Command::Update</a>
+  
+    <li><a href="../../Heroku/Command/Version.html">Heroku::Command::Version</a>
+  
+    <li><a href="../../Heroku/Deprecated.html">Heroku::Deprecated</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help.html">Heroku::Deprecated::Help</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/ClassMethods.html">Heroku::Deprecated::Help::ClassMethods</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/HelpGroup.html">Heroku::Deprecated::Help::HelpGroup</a>
+  
+    <li><a href="../../Heroku/Distribution.html">Heroku::Distribution</a>
+  
+    <li><a href="../../Heroku/Helpers.html">Heroku::Helpers</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql.html">Heroku::Helpers::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql/Attachment.html">Heroku::Helpers::HerokuPostgresql::Attachment</a>
+  
+    <li><a href="../../Heroku/Helpers/LogDisplayer.html">Heroku::Helpers::LogDisplayer</a>
+  
+    <li><a href="../../Heroku/OkJson.html">Heroku::OkJson</a>
+  
+    <li><a href="../../Heroku/OkJson/Error.html">Heroku::OkJson::Error</a>
+  
+    <li><a href="../../Heroku/OkJson/Utf8Error.html">Heroku::OkJson::Utf8Error</a>
+  
+    <li><a href="../../Heroku/Plugin.html">Heroku::Plugin</a>
+  
+    <li><a href="../../Heroku/Plugin/ErrorUpdatingSymlinkPlugin.html">Heroku::Plugin::ErrorUpdatingSymlinkPlugin</a>
+  
+    <li><a href="../../Heroku/Updater.html">Heroku::Updater</a>
+  
+    <li><a href="../../HerokuPostgresql.html">HerokuPostgresql</a>
+  
+    <li><a href="../../HerokuPostgresql/Client.html">HerokuPostgresql::Client</a>
+  
+    <li><a href="../../Pgbackups.html">Pgbackups</a>
+  
+    <li><a href="../../Pgbackups/Client.html">Pgbackups::Client</a>
+  
+    <li><a href="../../Excon.html">Excon</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Heroku::Command::Certs</h1>
+
+  <div id="description" class="description">
+    
+<p>manage ssl endpoints for an app</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="SSL_DOCTOR">SSL_DOCTOR
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-add" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>certs:add CRT KEY</p>
+
+<p>Add an ssl endpoint to an app.</p>
+
+<pre>--bypass  # bypass the trust chain completion step</pre>
+          
+
+          
+          <div class="method-source-code" id="add-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/certs.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add</span>
+  <span class="ruby-identifier">crt</span>, <span class="ruby-identifier">key</span> = <span class="ruby-identifier">read_crt_and_key</span>
+  <span class="ruby-identifier">endpoint</span> = <span class="ruby-identifier">action</span>(<span class="ruby-node">&quot;Adding SSL Endpoint to #{app}&quot;</span>) { <span class="ruby-identifier">heroku</span>.<span class="ruby-identifier">ssl_endpoint_add</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">crt</span>, <span class="ruby-identifier">key</span>) }
+  <span class="ruby-identifier">display_warnings</span>(<span class="ruby-identifier">endpoint</span>)
+  <span class="ruby-identifier">display</span> <span class="ruby-node">&quot;#{app} now served by #{endpoint['cname']}&quot;</span>
+  <span class="ruby-identifier">display</span> <span class="ruby-string">&quot;Certificate details:&quot;</span>
+  <span class="ruby-identifier">display_certificate_info</span>(<span class="ruby-identifier">endpoint</span>)
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">UsageError</span>
+  <span class="ruby-identifier">fail</span>(<span class="ruby-string">&quot;Usage: heroku certs:add CRT KEY\nMust specify CRT and KEY to add cert.&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add-method -->
+
+    
+      <div id="method-i-chain" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chain</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>certs:chain CRT [CRT ...]</p>
+
+<p>Print the ordered and complete chain for the given certificate.</p>
+
+<p>Optional intermediate certificates may be given too, and will be used
+during chain resolution.</p>
+          
+
+          
+          <div class="method-source-code" id="chain-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/certs.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chain</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">read_crt_through_ssl_doctor</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">UsageError</span>
+  <span class="ruby-identifier">fail</span>(<span class="ruby-string">&quot;Usage: heroku certs:chain CRT [CRT ...]\nMust specify at least one certificate file.&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- chain-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- chain-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>certs</p>
+
+<p>List ssl endpoints for an app.</p>
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/certs.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-identifier">endpoints</span> = <span class="ruby-identifier">heroku</span>.<span class="ruby-identifier">ssl_endpoint_list</span>(<span class="ruby-identifier">app</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">endpoints</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">display</span> <span class="ruby-node">&quot;#{app} has no SSL Endpoints.&quot;</span>
+    <span class="ruby-identifier">display</span> <span class="ruby-string">&quot;Use `heroku certs:add CRT KEY` to add one.&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">endpoints</span>.<span class="ruby-identifier">map!</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">endpoint</span><span class="ruby-operator">|</span>
+      {
+        <span class="ruby-string">'cname'</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">endpoint</span>[<span class="ruby-string">'cname'</span>],
+        <span class="ruby-string">'domains'</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">endpoint</span>[<span class="ruby-string">'ssl_cert'</span>][<span class="ruby-string">'cert_domains'</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">', '</span>),
+        <span class="ruby-string">'expires_at'</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">format_date</span>(<span class="ruby-identifier">endpoint</span>[<span class="ruby-string">'ssl_cert'</span>][<span class="ruby-string">'expires_at'</span>]),
+        <span class="ruby-string">'ca_signed?'</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">endpoint</span>[<span class="ruby-string">'ssl_cert'</span>][<span class="ruby-string">'ca_signed?'</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">capitalize</span>
+      }
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">display_table</span>(
+      <span class="ruby-identifier">endpoints</span>,
+      <span class="ruby-node">%w( cname domains expires_at ca_signed? )</span>,
+      [ <span class="ruby-string">&quot;Endpoint&quot;</span>, <span class="ruby-string">&quot;Common Name(s)&quot;</span>, <span class="ruby-string">&quot;Expires&quot;</span>, <span class="ruby-string">&quot;Trusted&quot;</span> ]
+    )
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-info" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">info</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>certs:info</p>
+
+<p>Show certificate information for an ssl endpoint.</p>
+          
+
+          
+          <div class="method-source-code" id="info-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/certs.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">info</span>
+  <span class="ruby-identifier">cname</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:endpoint</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">current_endpoint</span>
+  <span class="ruby-identifier">endpoint</span> = <span class="ruby-identifier">action</span>(<span class="ruby-node">&quot;Fetching SSL Endpoint #{cname} info for #{app}&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">heroku</span>.<span class="ruby-identifier">ssl_endpoint_info</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">cname</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">display</span> <span class="ruby-string">&quot;Certificate details:&quot;</span>
+  <span class="ruby-identifier">display_certificate_info</span>(<span class="ruby-identifier">endpoint</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- info-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- info-method -->
+
+    
+      <div id="method-i-key" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">key</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>certs:key CRT KEY [KEY ...]</p>
+
+<p>Print the correct key for the given certificate.</p>
+
+<p>You must pass one single certificate, and one or more keys. The first key
+that signs the certificate will be printed back.</p>
+          
+
+          
+          <div class="method-source-code" id="key-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/certs.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">key</span>
+  <span class="ruby-identifier">crt</span>, <span class="ruby-identifier">key</span> = <span class="ruby-identifier">read_crt_and_key_through_ssl_doctor</span>(<span class="ruby-string">&quot;Testing for signing key&quot;</span>)
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">key</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">UsageError</span>
+  <span class="ruby-identifier">fail</span>(<span class="ruby-string">&quot;Usage: heroku certs:key CRT KEY [KEY ...]\nMust specify one certificate file and at least one key file.&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- key-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- key-method -->
+
+    
+      <div id="method-i-remove" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>certs:remove</p>
+
+<p>Remove an SSL Endpoint from an app.</p>
+          
+
+          
+          <div class="method-source-code" id="remove-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/certs.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove</span>
+  <span class="ruby-identifier">cname</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:endpoint</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">current_endpoint</span>
+  <span class="ruby-identifier">action</span>(<span class="ruby-node">&quot;Removing SSL Endpoint #{cname} from #{app}&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">heroku</span>.<span class="ruby-identifier">ssl_endpoint_remove</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">cname</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">display</span> <span class="ruby-string">&quot;NOTE: Billing is still active. Remove SSL Endpoint add-on to stop billing.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove-method -->
+
+    
+      <div id="method-i-rollback" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rollback</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>certs:rollback</p>
+
+<p>Rollback an SSL Endpoint for an app.</p>
+          
+
+          
+          <div class="method-source-code" id="rollback-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/certs.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rollback</span>
+  <span class="ruby-identifier">cname</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:endpoint</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">current_endpoint</span>
+
+  <span class="ruby-identifier">endpoint</span> = <span class="ruby-identifier">action</span>(<span class="ruby-node">&quot;Rolling back SSL Endpoint #{cname} for #{app}&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">heroku</span>.<span class="ruby-identifier">ssl_endpoint_rollback</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">cname</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">display</span> <span class="ruby-string">&quot;New active certificate details:&quot;</span>
+  <span class="ruby-identifier">display_certificate_info</span>(<span class="ruby-identifier">endpoint</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- rollback-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- rollback-method -->
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>certs:update CRT KEY</p>
+
+<p><a href="Update.html">Update</a> an SSL Endpoint on an app.</p>
+
+<pre>--bypass  # bypass the trust chain completion step</pre>
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/certs.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-identifier">crt</span>, <span class="ruby-identifier">key</span> = <span class="ruby-identifier">read_crt_and_key</span>
+  <span class="ruby-identifier">cname</span>    = <span class="ruby-identifier">options</span>[<span class="ruby-value">:endpoint</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">current_endpoint</span>
+  <span class="ruby-identifier">endpoint</span> = <span class="ruby-identifier">action</span>(<span class="ruby-node">&quot;Updating SSL Endpoint #{cname} for #{app}&quot;</span>) { <span class="ruby-identifier">heroku</span>.<span class="ruby-identifier">ssl_endpoint_update</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">cname</span>, <span class="ruby-identifier">crt</span>, <span class="ruby-identifier">key</span>) }
+  <span class="ruby-identifier">display_warnings</span>(<span class="ruby-identifier">endpoint</span>)
+  <span class="ruby-identifier">display</span> <span class="ruby-string">&quot;Updated certificate details:&quot;</span>
+  <span class="ruby-identifier">display_certificate_info</span>(<span class="ruby-identifier">endpoint</span>)
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">UsageError</span>
+  <span class="ruby-identifier">fail</span>(<span class="ruby-string">&quot;Usage: heroku certs:update CRT KEY\nMust specify CRT and KEY to update cert.&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

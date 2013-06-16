@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=IBM862" http-equiv="Content-Type">
+
+<title>class Heroku::Command::Git - heroku-2.39.4 Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/heroku/command/git.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Base.html">Heroku::Command::Base</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-clone">#clone</a>
+    
+    <li><a href="#method-i-remote">#remote</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Heroku.html">Heroku</a>
+  
+    <li><a href="../../Heroku/Auth.html">Heroku::Auth</a>
+  
+    <li><a href="../../Heroku/CLI.html">Heroku::CLI</a>
+  
+    <li><a href="../../Heroku/Client.html">Heroku::Client</a>
+  
+    <li><a href="../../Heroku/Client/AppCrashed.html">Heroku::Client::AppCrashed</a>
+  
+    <li><a href="../../Heroku/Client/Cisaurus.html">Heroku::Client::Cisaurus</a>
+  
+    <li><a href="../../Heroku/Client/ConsoleSession.html">Heroku::Client::ConsoleSession</a>
+  
+    <li><a href="../../Heroku/Client/HerokuPostgresql.html">Heroku::Client::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Client/JSON.html">Heroku::Client::JSON</a>
+  
+    <li><a href="../../Heroku/Client/Pgbackups.html">Heroku::Client::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Client/Rendezvous.html">Heroku::Client::Rendezvous</a>
+  
+    <li><a href="../../Heroku/Client/Service.html">Heroku::Client::Service</a>
+  
+    <li><a href="../../Heroku/Command.html">Heroku::Command</a>
+  
+    <li><a href="../../Heroku/Command/Account.html">Heroku::Command::Account</a>
+  
+    <li><a href="../../Heroku/Command/Accounts.html">Heroku::Command::Accounts</a>
+  
+    <li><a href="../../Heroku/Command/Addons.html">Heroku::Command::Addons</a>
+  
+    <li><a href="../../Heroku/Command/Apps.html">Heroku::Command::Apps</a>
+  
+    <li><a href="../../Heroku/Command/Auth.html">Heroku::Command::Auth</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::Base</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::BaseWithApp</a>
+  
+    <li><a href="../../Heroku/Command/Certs.html">Heroku::Command::Certs</a>
+  
+    <li><a href="../../Heroku/Command/Certs/UsageError.html">Heroku::Command::Certs::UsageError</a>
+  
+    <li><a href="../../Heroku/Command/CommandFailed.html">Heroku::Command::CommandFailed</a>
+  
+    <li><a href="../../Heroku/Command/Config.html">Heroku::Command::Config</a>
+  
+    <li><a href="../../Heroku/Command/Db.html">Heroku::Command::Db</a>
+  
+    <li><a href="../../Heroku/Command/Domains.html">Heroku::Command::Domains</a>
+  
+    <li><a href="../../Heroku/Command/Drains.html">Heroku::Command::Drains</a>
+  
+    <li><a href="../../Heroku/Command/Fork.html">Heroku::Command::Fork</a>
+  
+    <li><a href="../../Heroku/Command/Git.html">Heroku::Command::Git</a>
+  
+    <li><a href="../../Heroku/Command/Help.html">Heroku::Command::Help</a>
+  
+    <li><a href="../../Heroku/Command/Keys.html">Heroku::Command::Keys</a>
+  
+    <li><a href="../../Heroku/Command/Labs.html">Heroku::Command::Labs</a>
+  
+    <li><a href="../../Heroku/Command/Logs.html">Heroku::Command::Logs</a>
+  
+    <li><a href="../../Heroku/Command/Maintenance.html">Heroku::Command::Maintenance</a>
+  
+    <li><a href="../../Heroku/Command/Pg.html">Heroku::Command::Pg</a>
+  
+    <li><a href="../../Heroku/Command/Pgbackups.html">Heroku::Command::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Command/Plugins.html">Heroku::Command::Plugins</a>
+  
+    <li><a href="../../Heroku/Command/Ps.html">Heroku::Command::Ps</a>
+  
+    <li><a href="../../Heroku/Command/Regions.html">Heroku::Command::Regions</a>
+  
+    <li><a href="../../Heroku/Command/Releases.html">Heroku::Command::Releases</a>
+  
+    <li><a href="../../Heroku/Command/Run.html">Heroku::Command::Run</a>
+  
+    <li><a href="../../Heroku/Command/Sharing.html">Heroku::Command::Sharing</a>
+  
+    <li><a href="../../Heroku/Command/Ssl.html">Heroku::Command::Ssl</a>
+  
+    <li><a href="../../Heroku/Command/Stack.html">Heroku::Command::Stack</a>
+  
+    <li><a href="../../Heroku/Command/Status.html">Heroku::Command::Status</a>
+  
+    <li><a href="../../Heroku/Command/Update.html">Heroku::Command::Update</a>
+  
+    <li><a href="../../Heroku/Command/Version.html">Heroku::Command::Version</a>
+  
+    <li><a href="../../Heroku/Deprecated.html">Heroku::Deprecated</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help.html">Heroku::Deprecated::Help</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/ClassMethods.html">Heroku::Deprecated::Help::ClassMethods</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/HelpGroup.html">Heroku::Deprecated::Help::HelpGroup</a>
+  
+    <li><a href="../../Heroku/Distribution.html">Heroku::Distribution</a>
+  
+    <li><a href="../../Heroku/Helpers.html">Heroku::Helpers</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql.html">Heroku::Helpers::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql/Attachment.html">Heroku::Helpers::HerokuPostgresql::Attachment</a>
+  
+    <li><a href="../../Heroku/Helpers/LogDisplayer.html">Heroku::Helpers::LogDisplayer</a>
+  
+    <li><a href="../../Heroku/OkJson.html">Heroku::OkJson</a>
+  
+    <li><a href="../../Heroku/OkJson/Error.html">Heroku::OkJson::Error</a>
+  
+    <li><a href="../../Heroku/OkJson/Utf8Error.html">Heroku::OkJson::Utf8Error</a>
+  
+    <li><a href="../../Heroku/Plugin.html">Heroku::Plugin</a>
+  
+    <li><a href="../../Heroku/Plugin/ErrorUpdatingSymlinkPlugin.html">Heroku::Plugin::ErrorUpdatingSymlinkPlugin</a>
+  
+    <li><a href="../../Heroku/Updater.html">Heroku::Updater</a>
+  
+    <li><a href="../../HerokuPostgresql.html">HerokuPostgresql</a>
+  
+    <li><a href="../../HerokuPostgresql/Client.html">HerokuPostgresql::Client</a>
+  
+    <li><a href="../../Pgbackups.html">Pgbackups</a>
+  
+    <li><a href="../../Pgbackups/Client.html">Pgbackups::Client</a>
+  
+    <li><a href="../../Excon.html">Excon</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Heroku::Command::Git</h1>
+
+  <div id="description" class="description">
+    
+<p>manage git for apps</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-clone" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clone</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>git:clone APP [DIRECTORY]
+
+clones a heroku app to your local machine at DIRECTORY (defaults to app name)
+
+-r, --remote REMOTE  # the git remote to create, default &quot;heroku&quot;</pre>
+
+<p>Examples:</p>
+
+<pre>$ heroku git:clone example
+Cloning from app 'example'...
+Cloning into 'example'...
+remote: Counting objects: 42, done.
+...</pre>
+          
+
+          
+          <div class="method-source-code" id="clone-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/git.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clone</span>
+  <span class="ruby-identifier">remote</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:remote</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&quot;heroku&quot;</span>
+
+  <span class="ruby-identifier">name</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:app</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">shift_argument</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;Usage: heroku git:clone APP [DIRECTORY]&quot;</span>)
+  <span class="ruby-identifier">directory</span> = <span class="ruby-identifier">shift_argument</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+
+  <span class="ruby-identifier">git_url</span> = <span class="ruby-identifier">api</span>.<span class="ruby-identifier">get_app</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">body</span>[<span class="ruby-string">&quot;git_url&quot;</span>]
+
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Cloning from app '#{name}'...&quot;</span>
+  <span class="ruby-identifier">system</span> <span class="ruby-node">&quot;git clone -o #{remote} #{git_url} #{directory}&quot;</span>.<span class="ruby-identifier">strip</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- clone-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- clone-method -->
+
+    
+      <div id="method-i-remote" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remote</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>git:remote [OPTIONS]
+
+adds a git remote to an app repo
+
+if OPTIONS are specified they will be passed to git remote add
+
+-r, --remote REMOTE        # the git remote to create, default &quot;heroku&quot;</pre>
+
+<p>Examples:</p>
+
+<pre>$ heroku git:remote -a example
+Git remote heroku added
+
+$ heroku git:remote -a example
+!    Git remote heroku already exists</pre>
+          
+
+          
+          <div class="method-source-code" id="remote-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/git.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remote</span>
+  <span class="ruby-identifier">git_options</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; &quot;</span>)
+  <span class="ruby-identifier">remote</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:remote</span>] <span class="ruby-operator">||</span> <span class="ruby-string">'heroku'</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">git</span>(<span class="ruby-string">'remote'</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\n&quot;</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">remote</span>)
+    <span class="ruby-identifier">error</span>(<span class="ruby-node">&quot;Git remote #{remote} already exists&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">app_data</span> = <span class="ruby-identifier">api</span>.<span class="ruby-identifier">get_app</span>(<span class="ruby-identifier">app</span>).<span class="ruby-identifier">body</span>
+    <span class="ruby-identifier">create_git_remote</span>(<span class="ruby-identifier">remote</span>, <span class="ruby-identifier">app_data</span>[<span class="ruby-string">'git_url'</span>])
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remote-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remote-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=IBM862" http-equiv="Content-Type">
+
+<title>module Heroku::Helpers::HerokuPostgresql - heroku-2.39.4 Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/heroku/helpers/heroku_postgresql.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-app_attachments">#app_attachments</a>
+    
+    <li><a href="#method-i-app_config_vars">#app_config_vars</a>
+    
+    <li><a href="#method-i-find_database_url_real_attachment">#find_database_url_real_attachment</a>
+    
+    <li><a href="#method-i-forget_config-21">#forget_config!</a>
+    
+    <li><a href="#method-i-hpg_addon_name">#hpg_addon_name</a>
+    
+    <li><a href="#method-i-hpg_databases">#hpg_databases</a>
+    
+    <li><a href="#method-i-hpg_resolve">#hpg_resolve</a>
+    
+    <li><a href="#method-i-hpg_translate_fork_and_follow">#hpg_translate_fork_and_follow</a>
+    
+    <li><a href="#method-i-match_attachments_by_name">#match_attachments_by_name</a>
+    
+    <li><a href="#method-i-resource_url">#resource_url</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Heroku.html">Heroku</a>
+  
+    <li><a href="../../Heroku/Auth.html">Heroku::Auth</a>
+  
+    <li><a href="../../Heroku/CLI.html">Heroku::CLI</a>
+  
+    <li><a href="../../Heroku/Client.html">Heroku::Client</a>
+  
+    <li><a href="../../Heroku/Client/AppCrashed.html">Heroku::Client::AppCrashed</a>
+  
+    <li><a href="../../Heroku/Client/Cisaurus.html">Heroku::Client::Cisaurus</a>
+  
+    <li><a href="../../Heroku/Client/ConsoleSession.html">Heroku::Client::ConsoleSession</a>
+  
+    <li><a href="../../Heroku/Client/HerokuPostgresql.html">Heroku::Client::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Client/JSON.html">Heroku::Client::JSON</a>
+  
+    <li><a href="../../Heroku/Client/Pgbackups.html">Heroku::Client::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Client/Rendezvous.html">Heroku::Client::Rendezvous</a>
+  
+    <li><a href="../../Heroku/Client/Service.html">Heroku::Client::Service</a>
+  
+    <li><a href="../../Heroku/Command.html">Heroku::Command</a>
+  
+    <li><a href="../../Heroku/Command/Account.html">Heroku::Command::Account</a>
+  
+    <li><a href="../../Heroku/Command/Accounts.html">Heroku::Command::Accounts</a>
+  
+    <li><a href="../../Heroku/Command/Addons.html">Heroku::Command::Addons</a>
+  
+    <li><a href="../../Heroku/Command/Apps.html">Heroku::Command::Apps</a>
+  
+    <li><a href="../../Heroku/Command/Auth.html">Heroku::Command::Auth</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::Base</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::BaseWithApp</a>
+  
+    <li><a href="../../Heroku/Command/Certs.html">Heroku::Command::Certs</a>
+  
+    <li><a href="../../Heroku/Command/Certs/UsageError.html">Heroku::Command::Certs::UsageError</a>
+  
+    <li><a href="../../Heroku/Command/CommandFailed.html">Heroku::Command::CommandFailed</a>
+  
+    <li><a href="../../Heroku/Command/Config.html">Heroku::Command::Config</a>
+  
+    <li><a href="../../Heroku/Command/Db.html">Heroku::Command::Db</a>
+  
+    <li><a href="../../Heroku/Command/Domains.html">Heroku::Command::Domains</a>
+  
+    <li><a href="../../Heroku/Command/Drains.html">Heroku::Command::Drains</a>
+  
+    <li><a href="../../Heroku/Command/Fork.html">Heroku::Command::Fork</a>
+  
+    <li><a href="../../Heroku/Command/Git.html">Heroku::Command::Git</a>
+  
+    <li><a href="../../Heroku/Command/Help.html">Heroku::Command::Help</a>
+  
+    <li><a href="../../Heroku/Command/Keys.html">Heroku::Command::Keys</a>
+  
+    <li><a href="../../Heroku/Command/Labs.html">Heroku::Command::Labs</a>
+  
+    <li><a href="../../Heroku/Command/Logs.html">Heroku::Command::Logs</a>
+  
+    <li><a href="../../Heroku/Command/Maintenance.html">Heroku::Command::Maintenance</a>
+  
+    <li><a href="../../Heroku/Command/Pg.html">Heroku::Command::Pg</a>
+  
+    <li><a href="../../Heroku/Command/Pgbackups.html">Heroku::Command::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Command/Plugins.html">Heroku::Command::Plugins</a>
+  
+    <li><a href="../../Heroku/Command/Ps.html">Heroku::Command::Ps</a>
+  
+    <li><a href="../../Heroku/Command/Regions.html">Heroku::Command::Regions</a>
+  
+    <li><a href="../../Heroku/Command/Releases.html">Heroku::Command::Releases</a>
+  
+    <li><a href="../../Heroku/Command/Run.html">Heroku::Command::Run</a>
+  
+    <li><a href="../../Heroku/Command/Sharing.html">Heroku::Command::Sharing</a>
+  
+    <li><a href="../../Heroku/Command/Ssl.html">Heroku::Command::Ssl</a>
+  
+    <li><a href="../../Heroku/Command/Stack.html">Heroku::Command::Stack</a>
+  
+    <li><a href="../../Heroku/Command/Status.html">Heroku::Command::Status</a>
+  
+    <li><a href="../../Heroku/Command/Update.html">Heroku::Command::Update</a>
+  
+    <li><a href="../../Heroku/Command/Version.html">Heroku::Command::Version</a>
+  
+    <li><a href="../../Heroku/Deprecated.html">Heroku::Deprecated</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help.html">Heroku::Deprecated::Help</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/ClassMethods.html">Heroku::Deprecated::Help::ClassMethods</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/HelpGroup.html">Heroku::Deprecated::Help::HelpGroup</a>
+  
+    <li><a href="../../Heroku/Distribution.html">Heroku::Distribution</a>
+  
+    <li><a href="../../Heroku/Helpers.html">Heroku::Helpers</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql.html">Heroku::Helpers::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql/Attachment.html">Heroku::Helpers::HerokuPostgresql::Attachment</a>
+  
+    <li><a href="../../Heroku/Helpers/LogDisplayer.html">Heroku::Helpers::LogDisplayer</a>
+  
+    <li><a href="../../Heroku/OkJson.html">Heroku::OkJson</a>
+  
+    <li><a href="../../Heroku/OkJson/Error.html">Heroku::OkJson::Error</a>
+  
+    <li><a href="../../Heroku/OkJson/Utf8Error.html">Heroku::OkJson::Utf8Error</a>
+  
+    <li><a href="../../Heroku/Plugin.html">Heroku::Plugin</a>
+  
+    <li><a href="../../Heroku/Plugin/ErrorUpdatingSymlinkPlugin.html">Heroku::Plugin::ErrorUpdatingSymlinkPlugin</a>
+  
+    <li><a href="../../Heroku/Updater.html">Heroku::Updater</a>
+  
+    <li><a href="../../HerokuPostgresql.html">HerokuPostgresql</a>
+  
+    <li><a href="../../HerokuPostgresql/Client.html">HerokuPostgresql::Client</a>
+  
+    <li><a href="../../Pgbackups.html">Pgbackups</a>
+  
+    <li><a href="../../Pgbackups/Client.html">Pgbackups::Client</a>
+  
+    <li><a href="../../Excon.html">Excon</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Heroku::Helpers::HerokuPostgresql</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-app_attachments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">app_attachments</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="app_attachments-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">app_attachments</span>
+  <span class="ruby-ivar">@app_attachments</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">api</span>.<span class="ruby-identifier">get_attachments</span>(<span class="ruby-identifier">app</span>).<span class="ruby-identifier">body</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">raw</span><span class="ruby-operator">|</span> <span class="ruby-constant">Attachment</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">raw</span>) }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- app_attachments-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- app_attachments-method -->
+
+    
+      <div id="method-i-app_config_vars" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">app_config_vars</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="app_config_vars-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">app_config_vars</span>
+  <span class="ruby-ivar">@app_config_vars</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">api</span>.<span class="ruby-identifier">get_config_vars</span>(<span class="ruby-identifier">app</span>).<span class="ruby-identifier">body</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- app_config_vars-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- app_config_vars-method -->
+
+    
+      <div id="method-i-find_database_url_real_attachment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_database_url_real_attachment</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="find_database_url_real_attachment-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_database_url_real_attachment</span>
+  <span class="ruby-identifier">raw_primary_db_url</span> = <span class="ruby-identifier">app_config_vars</span>[<span class="ruby-string">'DATABASE_URL'</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">raw_primary_db_url</span>
+
+  <span class="ruby-identifier">primary_db_url</span> = <span class="ruby-identifier">raw_primary_db_url</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;?&quot;</span>).<span class="ruby-identifier">first</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">primary_db_url</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">primary_db_url</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">real_config</span> = <span class="ruby-identifier">app_config_vars</span>.<span class="ruby-identifier">detect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'DATABASE_URL'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">primary_db_url</span> }
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">real_config</span>
+    <span class="ruby-identifier">real</span> = <span class="ruby-identifier">hpg_databases</span>[<span class="ruby-identifier">real_config</span>.<span class="ruby-identifier">first</span>]
+    <span class="ruby-identifier">real</span>.<span class="ruby-identifier">primary_attachment!</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">real</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">real</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find_database_url_real_attachment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find_database_url_real_attachment-method -->
+
+    
+      <div id="method-i-forget_config-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">forget_config!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="forget_config-21-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">forget_config!</span>
+  <span class="ruby-ivar">@hpg_databases</span>   = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@app_config_vars</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@app_attachments</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- forget_config-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- forget_config-21-method -->
+
+    
+      <div id="method-i-hpg_addon_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hpg_addon_name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="hpg_addon_name-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hpg_addon_name</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">ENV</span>[<span class="ruby-string">'SHOGUN'</span>]
+    <span class="ruby-node">&quot;shogun-#{ENV['SHOGUN']}&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">ENV</span>[<span class="ruby-string">'HEROKU_POSTGRESQL_ADDON_NAME'</span>] <span class="ruby-operator">||</span> <span class="ruby-string">'heroku-postgresql'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- hpg_addon_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- hpg_addon_name-method -->
+
+    
+      <div id="method-i-hpg_databases" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hpg_databases</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="hpg_databases-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hpg_databases</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@hpg_databases</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@hpg_databases</span>
+  <span class="ruby-identifier">pairs</span> = <span class="ruby-identifier">app_attachments</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">att</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">att</span>.<span class="ruby-identifier">addon</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">hpg_addon_name</span>
+    }.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">att</span><span class="ruby-operator">|</span>
+      [<span class="ruby-identifier">att</span>.<span class="ruby-identifier">config_var</span>, <span class="ruby-identifier">att</span>]
+    }
+  <span class="ruby-ivar">@hpg_databases</span> = <span class="ruby-constant">Hash</span>[ <span class="ruby-identifier">pairs</span> ]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">find_database_url_real_attachment</span>
+    <span class="ruby-ivar">@hpg_databases</span>[<span class="ruby-string">'DATABASE_URL'</span>] = <span class="ruby-identifier">find_database_url_real_attachment</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@hpg_databases</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- hpg_databases-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- hpg_databases-method -->
+
+    
+      <div id="method-i-hpg_resolve" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hpg_resolve</span><span
+            class="method-args">(name, default=nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="hpg_resolve-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hpg_resolve</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">default</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">name</span> = <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">name</span> = <span class="ruby-string">'DATABASE_URL'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'DATABASE'</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">hpg_databases</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;Your app has no databases.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">found_attachment</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">candidates</span> = <span class="ruby-identifier">match_attachments_by_name</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">default</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">app_config_vars</span>[<span class="ruby-identifier">default</span>]
+    <span class="ruby-identifier">found_attachment</span> = <span class="ruby-identifier">hpg_databases</span>[<span class="ruby-identifier">default</span>]
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">candidates</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">found_attachment</span> = <span class="ruby-identifier">hpg_databases</span>[<span class="ruby-identifier">candidates</span>.<span class="ruby-identifier">first</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">found_attachment</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">error</span>(<span class="ruby-node">&quot;Unknown database#{': ' + name unless name.empty?}. Valid options are: #{hpg_databases.keys.sort.join(&quot;, &quot;)}&quot;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">found_attachment</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- hpg_resolve-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- hpg_resolve-method -->
+
+    
+      <div id="method-i-hpg_translate_fork_and_follow" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hpg_translate_fork_and_follow</span><span
+            class="method-args">(addon, config)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="hpg_translate_fork_and_follow-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hpg_translate_fork_and_follow</span>(<span class="ruby-identifier">addon</span>, <span class="ruby-identifier">config</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">addon</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/^#{hpg_addon_name}/</span>
+    <span class="ruby-node">%w[fork follow]</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opt</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span> = <span class="ruby-identifier">config</span>[<span class="ruby-identifier">opt</span>]
+        <span class="ruby-keyword">unless</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+          <span class="ruby-identifier">error</span>(<span class="ruby-node">&quot;--#{opt} requires a database argument.&quot;</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">uri</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">val</span>) <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">uri</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">scheme</span>
+          <span class="ruby-identifier">argument_url</span> = <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">attachment</span> = <span class="ruby-identifier">hpg_resolve</span>(<span class="ruby-identifier">val</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">attachment</span>.<span class="ruby-identifier">starter_plan?</span>
+            <span class="ruby-identifier">error</span>(<span class="ruby-node">&quot;#{opt.tr 'f', 'F'} is only available on production databases.&quot;</span>)
+          <span class="ruby-keyword">end</span>
+          <span class="ruby-identifier">argument_url</span> = <span class="ruby-identifier">attachment</span>.<span class="ruby-identifier">url</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">config</span>[<span class="ruby-identifier">opt</span>] = <span class="ruby-identifier">argument_url</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- hpg_translate_fork_and_follow-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- hpg_translate_fork_and_follow-method -->
+
+    
+      <div id="method-i-match_attachments_by_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">match_attachments_by_name</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="match_attachments_by_name-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">match_attachments_by_name</span>(<span class="ruby-identifier">name</span>)
+   <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">empty?</span>
+   <span class="ruby-keyword">return</span> [<span class="ruby-identifier">name</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">hpg_databases</span>[<span class="ruby-identifier">name</span>]
+   <span class="ruby-identifier">hpg_databases</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">grep</span>(<span class="ruby-node">%r{#{ name }}</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- match_attachments_by_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- match_attachments_by_name-method -->
+
+    
+      <div id="method-i-resource_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resource_url</span><span
+            class="method-args">(resource)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="resource_url-source">
+            <pre><span class="ruby-comment"># File lib/heroku/helpers/heroku_postgresql.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">resource_url</span>(<span class="ruby-identifier">resource</span>)
+  <span class="ruby-identifier">api</span>.<span class="ruby-identifier">get_resource</span>(<span class="ruby-identifier">resource</span>).<span class="ruby-identifier">body</span>[<span class="ruby-string">'value'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- resource_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- resource_url-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

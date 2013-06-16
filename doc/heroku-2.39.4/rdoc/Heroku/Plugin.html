@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=IBM862" http-equiv="Content-Type">
+
+<title>class Heroku::Plugin - heroku-2.39.4 Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/heroku/plugin.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="Helpers.html">Heroku::Helpers</a>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-check_for_deprecation">::check_for_deprecation</a>
+    
+    <li><a href="#method-c-directory">::directory</a>
+    
+    <li><a href="#method-c-list">::list</a>
+    
+    <li><a href="#method-c-load-21">::load!</a>
+    
+    <li><a href="#method-c-load_plugin">::load_plugin</a>
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-c-remove_plugin">::remove_plugin</a>
+    
+    <li><a href="#method-c-skip_plugins">::skip_plugins</a>
+    
+    <li><a href="#method-i-install">#install</a>
+    
+    <li><a href="#method-i-path">#path</a>
+    
+    <li><a href="#method-i-to_s">#to_s</a>
+    
+    <li><a href="#method-i-uninstall">#uninstall</a>
+    
+    <li><a href="#method-i-update">#update</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Heroku.html">Heroku</a>
+  
+    <li><a href="../Heroku/Auth.html">Heroku::Auth</a>
+  
+    <li><a href="../Heroku/CLI.html">Heroku::CLI</a>
+  
+    <li><a href="../Heroku/Client.html">Heroku::Client</a>
+  
+    <li><a href="../Heroku/Client/AppCrashed.html">Heroku::Client::AppCrashed</a>
+  
+    <li><a href="../Heroku/Client/Cisaurus.html">Heroku::Client::Cisaurus</a>
+  
+    <li><a href="../Heroku/Client/ConsoleSession.html">Heroku::Client::ConsoleSession</a>
+  
+    <li><a href="../Heroku/Client/HerokuPostgresql.html">Heroku::Client::HerokuPostgresql</a>
+  
+    <li><a href="../Heroku/Client/JSON.html">Heroku::Client::JSON</a>
+  
+    <li><a href="../Heroku/Client/Pgbackups.html">Heroku::Client::Pgbackups</a>
+  
+    <li><a href="../Heroku/Client/Rendezvous.html">Heroku::Client::Rendezvous</a>
+  
+    <li><a href="../Heroku/Client/Service.html">Heroku::Client::Service</a>
+  
+    <li><a href="../Heroku/Command.html">Heroku::Command</a>
+  
+    <li><a href="../Heroku/Command/Account.html">Heroku::Command::Account</a>
+  
+    <li><a href="../Heroku/Command/Accounts.html">Heroku::Command::Accounts</a>
+  
+    <li><a href="../Heroku/Command/Addons.html">Heroku::Command::Addons</a>
+  
+    <li><a href="../Heroku/Command/Apps.html">Heroku::Command::Apps</a>
+  
+    <li><a href="../Heroku/Command/Auth.html">Heroku::Command::Auth</a>
+  
+    <li><a href="../Heroku/Command/Base.html">Heroku::Command::Base</a>
+  
+    <li><a href="../Heroku/Command/Base.html">Heroku::Command::BaseWithApp</a>
+  
+    <li><a href="../Heroku/Command/Certs.html">Heroku::Command::Certs</a>
+  
+    <li><a href="../Heroku/Command/Certs/UsageError.html">Heroku::Command::Certs::UsageError</a>
+  
+    <li><a href="../Heroku/Command/CommandFailed.html">Heroku::Command::CommandFailed</a>
+  
+    <li><a href="../Heroku/Command/Config.html">Heroku::Command::Config</a>
+  
+    <li><a href="../Heroku/Command/Db.html">Heroku::Command::Db</a>
+  
+    <li><a href="../Heroku/Command/Domains.html">Heroku::Command::Domains</a>
+  
+    <li><a href="../Heroku/Command/Drains.html">Heroku::Command::Drains</a>
+  
+    <li><a href="../Heroku/Command/Fork.html">Heroku::Command::Fork</a>
+  
+    <li><a href="../Heroku/Command/Git.html">Heroku::Command::Git</a>
+  
+    <li><a href="../Heroku/Command/Help.html">Heroku::Command::Help</a>
+  
+    <li><a href="../Heroku/Command/Keys.html">Heroku::Command::Keys</a>
+  
+    <li><a href="../Heroku/Command/Labs.html">Heroku::Command::Labs</a>
+  
+    <li><a href="../Heroku/Command/Logs.html">Heroku::Command::Logs</a>
+  
+    <li><a href="../Heroku/Command/Maintenance.html">Heroku::Command::Maintenance</a>
+  
+    <li><a href="../Heroku/Command/Pg.html">Heroku::Command::Pg</a>
+  
+    <li><a href="../Heroku/Command/Pgbackups.html">Heroku::Command::Pgbackups</a>
+  
+    <li><a href="../Heroku/Command/Plugins.html">Heroku::Command::Plugins</a>
+  
+    <li><a href="../Heroku/Command/Ps.html">Heroku::Command::Ps</a>
+  
+    <li><a href="../Heroku/Command/Regions.html">Heroku::Command::Regions</a>
+  
+    <li><a href="../Heroku/Command/Releases.html">Heroku::Command::Releases</a>
+  
+    <li><a href="../Heroku/Command/Run.html">Heroku::Command::Run</a>
+  
+    <li><a href="../Heroku/Command/Sharing.html">Heroku::Command::Sharing</a>
+  
+    <li><a href="../Heroku/Command/Ssl.html">Heroku::Command::Ssl</a>
+  
+    <li><a href="../Heroku/Command/Stack.html">Heroku::Command::Stack</a>
+  
+    <li><a href="../Heroku/Command/Status.html">Heroku::Command::Status</a>
+  
+    <li><a href="../Heroku/Command/Update.html">Heroku::Command::Update</a>
+  
+    <li><a href="../Heroku/Command/Version.html">Heroku::Command::Version</a>
+  
+    <li><a href="../Heroku/Deprecated.html">Heroku::Deprecated</a>
+  
+    <li><a href="../Heroku/Deprecated/Help.html">Heroku::Deprecated::Help</a>
+  
+    <li><a href="../Heroku/Deprecated/Help/ClassMethods.html">Heroku::Deprecated::Help::ClassMethods</a>
+  
+    <li><a href="../Heroku/Deprecated/Help/HelpGroup.html">Heroku::Deprecated::Help::HelpGroup</a>
+  
+    <li><a href="../Heroku/Distribution.html">Heroku::Distribution</a>
+  
+    <li><a href="../Heroku/Helpers.html">Heroku::Helpers</a>
+  
+    <li><a href="../Heroku/Helpers/HerokuPostgresql.html">Heroku::Helpers::HerokuPostgresql</a>
+  
+    <li><a href="../Heroku/Helpers/HerokuPostgresql/Attachment.html">Heroku::Helpers::HerokuPostgresql::Attachment</a>
+  
+    <li><a href="../Heroku/Helpers/LogDisplayer.html">Heroku::Helpers::LogDisplayer</a>
+  
+    <li><a href="../Heroku/OkJson.html">Heroku::OkJson</a>
+  
+    <li><a href="../Heroku/OkJson/Error.html">Heroku::OkJson::Error</a>
+  
+    <li><a href="../Heroku/OkJson/Utf8Error.html">Heroku::OkJson::Utf8Error</a>
+  
+    <li><a href="../Heroku/Plugin.html">Heroku::Plugin</a>
+  
+    <li><a href="../Heroku/Plugin/ErrorUpdatingSymlinkPlugin.html">Heroku::Plugin::ErrorUpdatingSymlinkPlugin</a>
+  
+    <li><a href="../Heroku/Updater.html">Heroku::Updater</a>
+  
+    <li><a href="../HerokuPostgresql.html">HerokuPostgresql</a>
+  
+    <li><a href="../HerokuPostgresql/Client.html">HerokuPostgresql::Client</a>
+  
+    <li><a href="../Pgbackups.html">Pgbackups</a>
+  
+    <li><a href="../Pgbackups/Client.html">Pgbackups::Client</a>
+  
+    <li><a href="../Excon.html">Excon</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Heroku::Plugin</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="DEPRECATED_PLUGINS">DEPRECATED_PLUGINS
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">name</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-uri" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">uri</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-check_for_deprecation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_for_deprecation</span><span
+            class="method-args">(plugin)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="check_for_deprecation-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">check_for_deprecation</span>(<span class="ruby-identifier">plugin</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">isatty</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">DEPRECATED_PLUGINS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">plugin</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">confirm</span> <span class="ruby-node">&quot;The plugin #{plugin} has been deprecated. Would you like to remove it? (y/N)&quot;</span>
+      <span class="ruby-identifier">remove_plugin</span>(<span class="ruby-identifier">plugin</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- check_for_deprecation-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- check_for_deprecation-method -->
+
+    
+      <div id="method-c-directory" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">directory</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="directory-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">directory</span>
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-node">&quot;#{home_directory}/.heroku/plugins&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- directory-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- directory-method -->
+
+    
+      <div id="method-c-list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">list</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="list-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">list</span>
+  <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{directory}/*&quot;</span>].<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">folder</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">folder</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- list-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- list-method -->
+
+    
+      <div id="method-c-load-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="load-21-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load!</span>
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plugin</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">check_for_deprecation</span>(<span class="ruby-identifier">plugin</span>)
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">skip_plugins</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">plugin</span>)
+    <span class="ruby-identifier">load_plugin</span>(<span class="ruby-identifier">plugin</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># check to see if we are using ddollar/heroku-accounts</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">list</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'heroku-accounts'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">methods</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value">:fetch_from_account</span>)
+    <span class="ruby-comment"># setup netrc to match the default, if one exists</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">default_account</span> = <span class="ruby-value">%x{ git config heroku.account }</span>.<span class="ruby-identifier">chomp</span>
+      <span class="ruby-identifier">account</span> = <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">extract_account</span> <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">account</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">read_credentials</span> <span class="ruby-operator">!=</span> [<span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">user</span>, <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">password</span>]
+        <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">credentials</span> = [<span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">user</span>, <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">password</span>]
+        <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">write_credentials</span>
+        <span class="ruby-identifier">load</span>(<span class="ruby-node">&quot;#{File.dirname(__FILE__)}/command/accounts.rb&quot;</span>)
+        <span class="ruby-comment"># kill memoization in case '--account' was passed</span>
+        <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Auth</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:@account</span>, <span class="ruby-keyword">nil</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- load-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- load-21-method -->
+
+    
+      <div id="method-c-load_plugin" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_plugin</span><span
+            class="method-args">(plugin)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="load_plugin-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load_plugin</span>(<span class="ruby-identifier">plugin</span>)
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">folder</span> = <span class="ruby-node">&quot;#{self.directory}/#{plugin}&quot;</span>
+    <span class="ruby-identifier">$:</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{folder}/lib&quot;</span>    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span> <span class="ruby-node">&quot;#{folder}/lib&quot;</span>
+    <span class="ruby-identifier">load</span> <span class="ruby-node">&quot;#{folder}/init.rb&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>  <span class="ruby-node">&quot;#{folder}/init.rb&quot;</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ScriptError</span>, <span class="ruby-constant">StandardError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">error</span>
+    <span class="ruby-identifier">styled_error</span>(<span class="ruby-identifier">error</span>, <span class="ruby-node">&quot;Unable to load plugin #{plugin}.&quot;</span>)
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- load_plugin-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- load_plugin-method -->
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(uri)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-ivar">@uri</span> = <span class="ruby-identifier">uri</span>
+  <span class="ruby-identifier">guess_name</span>(<span class="ruby-identifier">uri</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+      <div id="method-c-remove_plugin" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_plugin</span><span
+            class="method-args">(plugin)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="remove_plugin-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">remove_plugin</span>(<span class="ruby-identifier">plugin</span>)
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span>(<span class="ruby-node">&quot;#{self.directory}/#{plugin}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_plugin-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_plugin-method -->
+
+    
+      <div id="method-c-skip_plugins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">skip_plugins</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="skip_plugins-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">skip_plugins</span>
+  <span class="ruby-ivar">@skip_plugins</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;SKIP_PLUGINS&quot;</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">/[ ,]/</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- skip_plugins-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- skip_plugins-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-install" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">install</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="install-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">install</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-identifier">uninstall</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">directory</span>)
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">directory</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">git</span>(<span class="ruby-node">&quot;clone #{uri}&quot;</span>)
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">$?</span>.<span class="ruby-identifier">success?</span>
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_rf</span> <span class="ruby-identifier">path</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- install-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- install-method -->
+
+    
+      <div id="method-i-path" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">path</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="path-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">path</span>
+  <span class="ruby-node">&quot;#{self.class.directory}/#{name}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- path-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- path-method -->
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_s-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_s-method -->
+
+    
+      <div id="method-i-uninstall" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">uninstall</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="uninstall-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">uninstall</span>
+  <span class="ruby-identifier">ensure_plugin_exists</span>
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_r</span>(<span class="ruby-identifier">path</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- uninstall-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- uninstall-method -->
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File lib/heroku/plugin.rb, line 128</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+      <span class="ruby-identifier">ensure_plugin_exists</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">symlink?</span>(<span class="ruby-identifier">path</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugin</span><span class="ruby-operator">::</span><span class="ruby-constant">ErrorUpdatingSymlinkPlugin</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">path</span>) <span class="ruby-keyword">do</span>
+          <span class="ruby-keyword">unless</span> <span class="ruby-identifier">git</span>(<span class="ruby-string">'config --get branch.master.remote'</span>).<span class="ruby-identifier">empty?</span>
+            <span class="ruby-identifier">message</span> = <span class="ruby-identifier">git</span>(<span class="ruby-string">&quot;pull&quot;</span>)
+            <span class="ruby-keyword">unless</span> <span class="ruby-identifier">$?</span>.<span class="ruby-identifier">success?</span>
+              <span class="ruby-identifier">error</span>(<span class="ruby-node">&quot;Unable to update #{name}.\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">message</span>)
+            <span class="ruby-keyword">end</span>
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;#{name} is a legacy plugin installation.
+Enable updating by reinstalling with `heroku plugins:install`.
+&quot;</span>)
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div><!-- update-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

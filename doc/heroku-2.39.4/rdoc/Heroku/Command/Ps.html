@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=IBM862" http-equiv="Content-Type">
+
+<title>class Heroku::Command::Ps - heroku-2.39.4 Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/heroku/command/ps.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Base.html">Heroku::Command::Base</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-dynos">#dynos</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-resize">#resize</a>
+    
+    <li><a href="#method-i-restart">#restart</a>
+    
+    <li><a href="#method-i-scale">#scale</a>
+    
+    <li><a href="#method-i-stop">#stop</a>
+    
+    <li><a href="#method-i-workers">#workers</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Heroku.html">Heroku</a>
+  
+    <li><a href="../../Heroku/Auth.html">Heroku::Auth</a>
+  
+    <li><a href="../../Heroku/CLI.html">Heroku::CLI</a>
+  
+    <li><a href="../../Heroku/Client.html">Heroku::Client</a>
+  
+    <li><a href="../../Heroku/Client/AppCrashed.html">Heroku::Client::AppCrashed</a>
+  
+    <li><a href="../../Heroku/Client/Cisaurus.html">Heroku::Client::Cisaurus</a>
+  
+    <li><a href="../../Heroku/Client/ConsoleSession.html">Heroku::Client::ConsoleSession</a>
+  
+    <li><a href="../../Heroku/Client/HerokuPostgresql.html">Heroku::Client::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Client/JSON.html">Heroku::Client::JSON</a>
+  
+    <li><a href="../../Heroku/Client/Pgbackups.html">Heroku::Client::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Client/Rendezvous.html">Heroku::Client::Rendezvous</a>
+  
+    <li><a href="../../Heroku/Client/Service.html">Heroku::Client::Service</a>
+  
+    <li><a href="../../Heroku/Command.html">Heroku::Command</a>
+  
+    <li><a href="../../Heroku/Command/Account.html">Heroku::Command::Account</a>
+  
+    <li><a href="../../Heroku/Command/Accounts.html">Heroku::Command::Accounts</a>
+  
+    <li><a href="../../Heroku/Command/Addons.html">Heroku::Command::Addons</a>
+  
+    <li><a href="../../Heroku/Command/Apps.html">Heroku::Command::Apps</a>
+  
+    <li><a href="../../Heroku/Command/Auth.html">Heroku::Command::Auth</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::Base</a>
+  
+    <li><a href="../../Heroku/Command/Base.html">Heroku::Command::BaseWithApp</a>
+  
+    <li><a href="../../Heroku/Command/Certs.html">Heroku::Command::Certs</a>
+  
+    <li><a href="../../Heroku/Command/Certs/UsageError.html">Heroku::Command::Certs::UsageError</a>
+  
+    <li><a href="../../Heroku/Command/CommandFailed.html">Heroku::Command::CommandFailed</a>
+  
+    <li><a href="../../Heroku/Command/Config.html">Heroku::Command::Config</a>
+  
+    <li><a href="../../Heroku/Command/Db.html">Heroku::Command::Db</a>
+  
+    <li><a href="../../Heroku/Command/Domains.html">Heroku::Command::Domains</a>
+  
+    <li><a href="../../Heroku/Command/Drains.html">Heroku::Command::Drains</a>
+  
+    <li><a href="../../Heroku/Command/Fork.html">Heroku::Command::Fork</a>
+  
+    <li><a href="../../Heroku/Command/Git.html">Heroku::Command::Git</a>
+  
+    <li><a href="../../Heroku/Command/Help.html">Heroku::Command::Help</a>
+  
+    <li><a href="../../Heroku/Command/Keys.html">Heroku::Command::Keys</a>
+  
+    <li><a href="../../Heroku/Command/Labs.html">Heroku::Command::Labs</a>
+  
+    <li><a href="../../Heroku/Command/Logs.html">Heroku::Command::Logs</a>
+  
+    <li><a href="../../Heroku/Command/Maintenance.html">Heroku::Command::Maintenance</a>
+  
+    <li><a href="../../Heroku/Command/Pg.html">Heroku::Command::Pg</a>
+  
+    <li><a href="../../Heroku/Command/Pgbackups.html">Heroku::Command::Pgbackups</a>
+  
+    <li><a href="../../Heroku/Command/Plugins.html">Heroku::Command::Plugins</a>
+  
+    <li><a href="../../Heroku/Command/Ps.html">Heroku::Command::Ps</a>
+  
+    <li><a href="../../Heroku/Command/Regions.html">Heroku::Command::Regions</a>
+  
+    <li><a href="../../Heroku/Command/Releases.html">Heroku::Command::Releases</a>
+  
+    <li><a href="../../Heroku/Command/Run.html">Heroku::Command::Run</a>
+  
+    <li><a href="../../Heroku/Command/Sharing.html">Heroku::Command::Sharing</a>
+  
+    <li><a href="../../Heroku/Command/Ssl.html">Heroku::Command::Ssl</a>
+  
+    <li><a href="../../Heroku/Command/Stack.html">Heroku::Command::Stack</a>
+  
+    <li><a href="../../Heroku/Command/Status.html">Heroku::Command::Status</a>
+  
+    <li><a href="../../Heroku/Command/Update.html">Heroku::Command::Update</a>
+  
+    <li><a href="../../Heroku/Command/Version.html">Heroku::Command::Version</a>
+  
+    <li><a href="../../Heroku/Deprecated.html">Heroku::Deprecated</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help.html">Heroku::Deprecated::Help</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/ClassMethods.html">Heroku::Deprecated::Help::ClassMethods</a>
+  
+    <li><a href="../../Heroku/Deprecated/Help/HelpGroup.html">Heroku::Deprecated::Help::HelpGroup</a>
+  
+    <li><a href="../../Heroku/Distribution.html">Heroku::Distribution</a>
+  
+    <li><a href="../../Heroku/Helpers.html">Heroku::Helpers</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql.html">Heroku::Helpers::HerokuPostgresql</a>
+  
+    <li><a href="../../Heroku/Helpers/HerokuPostgresql/Attachment.html">Heroku::Helpers::HerokuPostgresql::Attachment</a>
+  
+    <li><a href="../../Heroku/Helpers/LogDisplayer.html">Heroku::Helpers::LogDisplayer</a>
+  
+    <li><a href="../../Heroku/OkJson.html">Heroku::OkJson</a>
+  
+    <li><a href="../../Heroku/OkJson/Error.html">Heroku::OkJson::Error</a>
+  
+    <li><a href="../../Heroku/OkJson/Utf8Error.html">Heroku::OkJson::Utf8Error</a>
+  
+    <li><a href="../../Heroku/Plugin.html">Heroku::Plugin</a>
+  
+    <li><a href="../../Heroku/Plugin/ErrorUpdatingSymlinkPlugin.html">Heroku::Plugin::ErrorUpdatingSymlinkPlugin</a>
+  
+    <li><a href="../../Heroku/Updater.html">Heroku::Updater</a>
+  
+    <li><a href="../../HerokuPostgresql.html">HerokuPostgresql</a>
+  
+    <li><a href="../../HerokuPostgresql/Client.html">HerokuPostgresql::Client</a>
+  
+    <li><a href="../../Pgbackups.html">Pgbackups</a>
+  
+    <li><a href="../../Pgbackups/Client.html">Pgbackups::Client</a>
+  
+    <li><a href="../../Excon.html">Excon</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Heroku::Command::Ps</h1>
+
+  <div id="description" class="description">
+    
+<p>manage dynos (dynos, workers)</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-dynos" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dynos</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>ps:dynos [QTY]
+
+DEPRECATED: use `heroku ps:scale dynos=N`
+
+scale to QTY web processes
+
+if QTY is not specified, display the number of web processes currently running</pre>
+
+<p>Example:</p>
+
+<pre>$ heroku ps:dynos 3
+Scaling dynos... done, now running 3</pre>
+          
+
+          
+          <div class="method-source-code" id="dynos-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/ps.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dynos</span>
+  <span class="ruby-comment"># deprecation notice added to v2.21.3 on 03/16/12</span>
+  <span class="ruby-identifier">display</span>(<span class="ruby-string">&quot;~ `heroku ps:dynos QTY` has been deprecated and replaced with `heroku ps:scale dynos=QTY`&quot;</span>)
+
+  <span class="ruby-identifier">dynos</span> = <span class="ruby-identifier">shift_argument</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">dynos</span>
+    <span class="ruby-identifier">action</span>(<span class="ruby-string">&quot;Scaling dynos&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">new_dynos</span> = <span class="ruby-identifier">api</span>.<span class="ruby-identifier">put_dynos</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">dynos</span>).<span class="ruby-identifier">body</span>[<span class="ruby-string">&quot;dynos&quot;</span>]
+      <span class="ruby-identifier">status</span>(<span class="ruby-node">&quot;now running #{new_dynos}&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">app_data</span> = <span class="ruby-identifier">api</span>.<span class="ruby-identifier">get_app</span>(<span class="ruby-identifier">app</span>).<span class="ruby-identifier">body</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">app_data</span>[<span class="ruby-string">&quot;stack&quot;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;cedar&quot;</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Command</span><span class="ruby-operator">::</span><span class="ruby-constant">CommandFailed</span>, <span class="ruby-string">&quot;For Cedar apps, use `heroku ps`&quot;</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">display</span>(<span class="ruby-node">&quot;#{app} is running #{quantify(&quot;dyno&quot;, app_data[&quot;dynos&quot;])}&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- dynos-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- dynos-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>ps
+
+list dynos for an app</pre>
+
+<p>Example:</p>
+
+<pre>$ heroku ps
+=== run: one-off dyno
+run.1: up for 5m: `bash`
+
+=== web: `bundle exec thin start -p $PORT`
+web.1: created for 30s</pre>
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/ps.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+  <span class="ruby-identifier">processes</span> = <span class="ruby-identifier">api</span>.<span class="ruby-identifier">get_ps</span>(<span class="ruby-identifier">app</span>).<span class="ruby-identifier">body</span>
+
+  <span class="ruby-identifier">processes_by_command</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>,<span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = []}
+  <span class="ruby-identifier">processes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">process</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">name</span>    = <span class="ruby-identifier">process</span>[<span class="ruby-string">&quot;process&quot;</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;.&quot;</span>).<span class="ruby-identifier">first</span>
+    <span class="ruby-identifier">elapsed</span> = <span class="ruby-identifier">time_ago</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">process</span>[<span class="ruby-string">'elapsed'</span>])
+    <span class="ruby-identifier">size</span>    = <span class="ruby-identifier">process</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">&quot;size&quot;</span>, <span class="ruby-value">1</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;run&quot;</span>
+      <span class="ruby-identifier">key</span>  = <span class="ruby-string">&quot;run: one-off processes&quot;</span>
+      <span class="ruby-identifier">item</span> = <span class="ruby-string">&quot;%s (%sX): %s %s: `%s`&quot;</span> <span class="ruby-operator">%</span> [ <span class="ruby-identifier">process</span>[<span class="ruby-string">&quot;process&quot;</span>], <span class="ruby-identifier">size</span>, <span class="ruby-identifier">process</span>[<span class="ruby-string">&quot;state&quot;</span>], <span class="ruby-identifier">elapsed</span>, <span class="ruby-identifier">process</span>[<span class="ruby-string">&quot;command&quot;</span>] ]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">key</span>  = <span class="ruby-node">&quot;#{name} (#{size}X): `#{process[&quot;command&quot;]}`&quot;</span>
+      <span class="ruby-identifier">item</span> = <span class="ruby-string">&quot;%s: %s %s&quot;</span> <span class="ruby-operator">%</span> [ <span class="ruby-identifier">process</span>[<span class="ruby-string">&quot;process&quot;</span>], <span class="ruby-identifier">process</span>[<span class="ruby-string">&quot;state&quot;</span>], <span class="ruby-identifier">elapsed</span> ]
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">processes_by_command</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">extract_run_id</span> = <span class="ruby-regexp">/\.(\d+).*:/</span>
+  <span class="ruby-identifier">processes_by_command</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">processes_by_command</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">processes_by_command</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">sort</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">x</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">extract_run_id</span>).<span class="ruby-identifier">captures</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">extract_run_id</span>).<span class="ruby-identifier">captures</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">processes_by_command</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">styled_header</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-identifier">styled_array</span>(<span class="ruby-identifier">processes_by_command</span>[<span class="ruby-identifier">key</span>], <span class="ruby-value">:sort</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-resize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resize</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>ps:resize DYNO1=1X|2X [DYNO2=1X|2X ...]</p>
+
+<p>resize dynos to the given size</p>
+
+<p>Example:</p>
+
+<p>$ heroku ps:resize web=2X worker=1X Resizing and restarting the specified
+dynos... done web dynos now 2X ($0.10/dyno-hour) worker dynos now 1X
+($0.05/dyno-hour)</p>
+          
+
+          
+          <div class="method-source-code" id="resize-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/ps.rb, line 246</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">resize</span>
+  <span class="ruby-identifier">app</span>
+  <span class="ruby-identifier">changes</span> = {}
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^([a-zA-Z0-9_]+)=(\d+)([xX]?)$/</span>
+      <span class="ruby-identifier">changes</span>[<span class="ruby-node">$1</span>] = { <span class="ruby-string">&quot;size&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">$2</span>.<span class="ruby-identifier">to_i</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">changes</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">message</span> = [
+        <span class="ruby-string">&quot;Usage: heroku ps:resize DYNO1=1X|2X [DYNO2=1X|2X ...]&quot;</span>,
+        <span class="ruby-string">&quot;Must specify DYNO and SIZE to resize.&quot;</span>
+    ]
+    <span class="ruby-identifier">error</span>(<span class="ruby-identifier">message</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>))
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">action</span>(<span class="ruby-string">&quot;Resizing and restarting the specified dynos&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">api</span>.<span class="ruby-identifier">request</span>(
+      <span class="ruby-value">:expects</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-value">200</span>,
+      <span class="ruby-value">:method</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:put</span>,
+      <span class="ruby-value">:path</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;/apps/#{app}/formation&quot;</span>,
+      <span class="ruby-value">:body</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">json_encode</span>(<span class="ruby-identifier">changes</span>)
+    )
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">changes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type</span>, <span class="ruby-identifier">options</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">size</span>  = <span class="ruby-identifier">options</span>[<span class="ruby-string">&quot;size&quot;</span>]
+    <span class="ruby-identifier">price</span> = <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">&quot;%.2f&quot;</span>, <span class="ruby-value">0.05</span> * <span class="ruby-identifier">size</span>)
+    <span class="ruby-identifier">display</span> <span class="ruby-node">&quot;#{type} dynos now #{size}X ($#{price}/dyno-hour)&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- resize-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- resize-method -->
+
+    
+      <div id="method-i-restart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">restart</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>ps:restart [DYNO]
+
+restart an app dyno
+
+if DYNO is not specified, restarts all dynos on the app</pre>
+
+<p>Examples:</p>
+
+<pre>$ heroku ps:restart web.1
+Restarting web.1 dyno... done
+
+$ heroku ps:restart web
+Restarting web dyno... done
+
+$ heroku ps:restart
+Restarting dynos... done</pre>
+          
+
+          
+          <div class="method-source-code" id="restart-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/ps.rb, line 145</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">restart</span>
+  <span class="ruby-identifier">dyno</span> = <span class="ruby-identifier">shift_argument</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+
+  <span class="ruby-identifier">message</span>, <span class="ruby-identifier">options</span> = <span class="ruby-keyword">case</span> <span class="ruby-identifier">dyno</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">NilClass</span>
+    [<span class="ruby-string">&quot;Restarting dynos&quot;</span>, {}]
+  <span class="ruby-keyword">when</span> <span class="ruby-regexp">/.+\..+/</span>
+    <span class="ruby-identifier">ps</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+    [<span class="ruby-node">&quot;Restarting #{ps} dyno&quot;</span>, { <span class="ruby-value">:ps</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ps</span> }]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">type</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+    [<span class="ruby-node">&quot;Restarting #{type} dynos&quot;</span>, { <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">type</span> }]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">action</span>(<span class="ruby-identifier">message</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">api</span>.<span class="ruby-identifier">post_ps_restart</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- restart-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- restart-method -->
+
+    
+      <div id="method-i-scale" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">scale</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>ps:scale DYNO1=AMOUNT1 [DYNO2=AMOUNT2 ...]
+
+scale dynos by the given amount</pre>
+
+<p>Examples:</p>
+
+<pre>$ heroku ps:scale web=3 worker+1
+Scaling web dynos... done, now running 3
+Scaling worker dynos... done, now running 1</pre>
+          
+
+          
+          <div class="method-source-code" id="scale-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/ps.rb, line 177</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">scale</span>
+  <span class="ruby-identifier">changes</span> = {}
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^([a-zA-Z0-9_]+)([=+-]\d+)$/</span>
+      <span class="ruby-identifier">changes</span>[<span class="ruby-node">$1</span>] = <span class="ruby-node">$2</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">changes</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;Usage: heroku ps:scale DYNO1=AMOUNT1 [DYNO2=AMOUNT2 ...]\nMust specify DYNO and AMOUNT to scale.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">changes</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dyno</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">amount</span> = <span class="ruby-identifier">changes</span>[<span class="ruby-identifier">dyno</span>]
+    <span class="ruby-identifier">action</span>(<span class="ruby-node">&quot;Scaling #{dyno} dynos&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">amount</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-string">&quot;=&quot;</span>, <span class="ruby-string">&quot;&quot;</span>)
+      <span class="ruby-identifier">new_qty</span> = <span class="ruby-identifier">api</span>.<span class="ruby-identifier">post_ps_scale</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">dyno</span>, <span class="ruby-identifier">amount</span>).<span class="ruby-identifier">body</span>
+      <span class="ruby-identifier">status</span>(<span class="ruby-node">&quot;now running #{new_qty}&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- scale-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- scale-method -->
+
+    
+      <div id="method-i-stop" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">stop</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>ps:stop DYNOS</p>
+
+<p>stop an app dyno</p>
+
+<p>Examples:</p>
+
+<p>$ heroku stop run.3 Stopping run.3 dyno... done</p>
+
+<p>$ heroku stop run Stopping run dynos... done</p>
+          
+
+          
+          <div class="method-source-code" id="stop-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/ps.rb, line 213</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">stop</span>
+  <span class="ruby-identifier">dyno</span> = <span class="ruby-identifier">shift_argument</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+
+  <span class="ruby-identifier">message</span>, <span class="ruby-identifier">options</span> = <span class="ruby-keyword">case</span> <span class="ruby-identifier">dyno</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">NilClass</span>
+    <span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;Usage: heroku ps:stop DYNO\nMust specify DYNO to stop.&quot;</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-regexp">/.+\..+/</span>
+    <span class="ruby-identifier">ps</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+    [<span class="ruby-node">&quot;Stopping #{ps} dyno&quot;</span>, { <span class="ruby-value">:ps</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ps</span> }]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">type</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>
+    [<span class="ruby-node">&quot;Stopping #{type} dynos&quot;</span>, { <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">type</span> }]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">action</span>(<span class="ruby-identifier">message</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">api</span>.<span class="ruby-identifier">post_ps_stop</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- stop-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- stop-method -->
+
+    
+      <div id="method-i-workers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">workers</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>ps:workers [QTY]
+
+DEPRECATED: use `heroku ps:scale workers=N`
+
+scale to QTY background processes
+
+if QTY is not specified, display the number of background processes currently running</pre>
+
+<p>Example:</p>
+
+<pre>$ heroku ps:dynos 3
+Scaling workers... done, now running 3</pre>
+          
+
+          
+          <div class="method-source-code" id="workers-source">
+            <pre><span class="ruby-comment"># File lib/heroku/command/ps.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">workers</span>
+  <span class="ruby-comment"># deprecation notice added to v2.21.3 on 03/16/12</span>
+  <span class="ruby-identifier">display</span>(<span class="ruby-string">&quot;~ `heroku ps:workers QTY` has been deprecated and replaced with `heroku ps:scale workers=QTY`&quot;</span>)
+
+  <span class="ruby-identifier">workers</span> = <span class="ruby-identifier">shift_argument</span>
+  <span class="ruby-identifier">validate_arguments!</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">workers</span>
+    <span class="ruby-identifier">action</span>(<span class="ruby-string">&quot;Scaling workers&quot;</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">new_workers</span> = <span class="ruby-identifier">api</span>.<span class="ruby-identifier">put_workers</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">workers</span>).<span class="ruby-identifier">body</span>[<span class="ruby-string">&quot;workers&quot;</span>]
+      <span class="ruby-identifier">status</span>(<span class="ruby-node">&quot;now running #{new_workers}&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">app_data</span> = <span class="ruby-identifier">api</span>.<span class="ruby-identifier">get_app</span>(<span class="ruby-identifier">app</span>).<span class="ruby-identifier">body</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">app_data</span>[<span class="ruby-string">&quot;stack&quot;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;cedar&quot;</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">Heroku</span><span class="ruby-operator">::</span><span class="ruby-constant">Command</span><span class="ruby-operator">::</span><span class="ruby-constant">CommandFailed</span>, <span class="ruby-string">&quot;For Cedar apps, use `heroku ps`&quot;</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">display</span>(<span class="ruby-node">&quot;#{app} is running #{quantify(&quot;worker&quot;, app_data[&quot;workers&quot;])}&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- workers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- workers-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
