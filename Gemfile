@@ -15,6 +15,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'pdf-reader'
+  gem 'taps'
 end
 
 
@@ -32,9 +33,9 @@ end
 
 
 
-group :test do
-  gem 'capybara'
-end
+# group :test do
+  # gem 'capybara'
+# end
 
 group :production do
   gem 'pg'
