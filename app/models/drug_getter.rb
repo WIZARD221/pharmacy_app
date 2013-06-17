@@ -59,7 +59,7 @@ class DrugGetter
   end
   
   def getDrugsWalmart
-    doc = Nokogiri::HTML(open("vendor\\walmart_drug_list2.html"))
+    doc = Nokogiri::HTML(open("public\\walmart_drug_list.html"))
     drugList = doc.css("div")
     
     store = Store.new
