@@ -4,6 +4,7 @@ $(document).ready(function() {
     });
     
     $("button.duration").hide();
+    $(".hidden").hide();
 } );
 
 

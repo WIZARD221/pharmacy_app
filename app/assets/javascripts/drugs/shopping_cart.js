@@ -1,6 +1,6 @@
 function addToCart(name, quantity, price, store){
 	var itemList = $("table."+store);
-	var item = "<tr class='cart-item'><td>"+name+"</td><td>"+quantity+"</td><td>"+price+"</td><td><button class='remove-button'" + 
+	var item = "<tr class='cart-item'><td class='name'>"+name+"</td><td class='quantity'>"+quantity+"</td><td class='price'>"+price+"</td><td class='options'><button class='remove-button'" + 
 			   "onClick=\"removeFromCart(this,'"+ store + "'," + price + ")\">X</button></td></tr>";
 	$(itemList).append(item);
 	incCartItems(store);
@@ -30,7 +30,7 @@ function hideBuyingOptions(){
 }
 
 function incCartItems(store){
-	var numItems = $("#num_items");
+	var numItems = $("#num-items");
 	var numItemsVal = numItems.html();
 	if(numItemsVal == "empty")
 	{
@@ -45,7 +45,8 @@ function incCartItems(store){
 	var storeNumItemsVal = storeNumItems.html();
 	
 	if(storeNumItemsVal == ""){
-		storeNumItems.html("1"); 
+		storeNumItems.html("1");
+		$("table." + store).show();	
 	}
 	else{
 		storeNumItems.html(parseInt(storeNumItemsVal) + 1);
@@ -54,7 +55,7 @@ function incCartItems(store){
 }
 
 function decCartItems(store){
-	var numItems = $("#num_items");
+	var numItems = $("#num-items");
 	var numItemsVal = numItems.html();
 	if(numItemsVal == "1")
 	{
@@ -70,6 +71,8 @@ function decCartItems(store){
 	
 	if(storeNumItemsVal == "1"){
 		storeNumItems.html(""); 
+		$("table." + store).hide();
+		$("p." + store).hide();
 	}
 	else{
 		storeNumItems.html(parseInt(storeNumItemsVal) - 1);

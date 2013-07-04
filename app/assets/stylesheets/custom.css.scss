@@ -97,29 +97,59 @@ div.dataTables_length{
   }
   p.Walmart{
     color: blue;
-    display: inline;
   }
   p.Target{
     color: red;
-    display: inline;
   }
   
-  p#num_items{
-    display: inline;
-    font-size: 12px;
-  }
   p.num-items{
     display: inline;
     font-size: 12px;
   }
   
-  p#checkout{
+  p.num-items{
     display: inline;
+    font-size: 12px;
   }
-  p#checkout_sum{
+  
+  p.cart-items{
     display: inline;
   }
   
+  p#checkout{
+    display: inline-block;
+  }
+  p#checkout_sum{
+    display: inline-block;
+  }
+  
+  table{
+    @extend .table;
+    @extend .table-bordered;
+    @extend .table-condensed;
+    
+    font-size: 12px;
+  }
+  
+  
+  
+  .cart-item{
+    .name{
+      width: 79%;
+    }
+    .quantity{
+      width: 8%;
+    }
+    .price{
+      width: 8%;
+    }
+    .options{
+      width: 5%;
+    }
+  }  
+
+
+
 }
 
 .hidden{
