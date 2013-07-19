@@ -1,0 +1,16 @@
+= javascript_include_tag "drugs/print"
+- @storeList.each do |store|
+  %div{id: "#{store['name']}_list", class: "drug-list"}
+    %h3.table-name="#{store['name']} Pharmacy"
+    %table{id:"#{store['name']}", class:"#{store['name']}"}
+      %thead
+        %th.name Name
+        %th.quantity Quantity
+        %th.price Price
+%table#temp_table
+  - @drugList.each do |drug|
+    %tr.item
+      %td.name=drug["name"]
+      %td.quantity=drug["quantity"]
+      %td.price=drug["price"]
+      %td.store=drug["store"]

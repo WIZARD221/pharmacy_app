@@ -1,25 +1,30 @@
 .span3
-  #shopping_cart 
-    %h5#cart-items.cart-items Shopping Cart Items:
-    %p#num-items.num-items empty
-    #Walmart-items
-      %p.cart-items.Walmart.hidden Walmart Items:
-      %p.cart-items.num-items.Walmart.hidden
-      %table.Walmart.hidden
-        %thead
-          %th Name
-          %th Quantity
-          %th Price
-    #Target-items
-      %p.cart-items.Target.hidden Target Items:
-      %p.num-items.Target.hidden
-      %table.Target.hidden
-        %thead
-          %th Name
-          %th Quantity
-          %th Price
-    %p#checkout Total Price:
-    %p#checkout_sum 0
-    %button#print Print
-  
+  #shopping_cart
+    %form{:action => "drugs/print", :method => "post"} 
+      %h5#cart-items.cart-items Shopping Cart Items:
+      %p#num-items.num-items empty
+      #Walmart-items
+        %p.store.hidden Walmart
+        %p.cart-items.Walmart.hidden Walmart Items:
+        %p.cart-items.num-items.Walmart.hidden
+        %table.Walmart.hidden
+          %thead
+            %th Name
+            %th Quantity
+            %th Price
+      #Target-items
+        %p.store.hidden Target
+        %p.cart-items.Target.hidden Target Items:
+        %p.num-items.Target.hidden
+        %table.Target.hidden
+          %thead
+            %th Name
+            %th Quantity
+            %th Price
+      %p#checkout Total Price:
+      %p#checkout_sum 0
+      %input{type: "hidden", id: "drugList", name: "drugList"}
+      %input{type: "hidden", name: "authenticity_token", value: "#{form_authenticity_token}"}
+      %input{type: "submit", id:"print", value: "Print", onClick: "createShoppingCartJson()"}
+    
   

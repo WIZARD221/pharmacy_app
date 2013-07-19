@@ -69,16 +69,16 @@ div.dataTables_length{
 .store-btns{
   button.Walmart{
   @extend .btn, .btn-primary;
-  width: 100px;
+  width: 100%;
   }
 
   button.Target{
     @extend .btn, .btn-danger;
-    width: 100px;
+    width: 100%;
   }
   button.duration{
     @extend .hidden;
-    width:50px;
+    width:50%;
   }
 }
 

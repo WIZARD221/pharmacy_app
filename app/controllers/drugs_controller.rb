@@ -13,4 +13,11 @@ class DrugsController < ApplicationController
   def show
     @drug = Drug.find(params[:id])
   end
+  
+  def print
+    drugJson = JSON.parse(params[:drugList])
+    
+    @storeList = drugJson["stores"]
+    @drugList = drugJson["drugs"]
+  end
 end

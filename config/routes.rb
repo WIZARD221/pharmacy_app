@@ -1,7 +1,6 @@
 PharmacyApp::Application.routes.draw do
   resources :drugs
-  match '/search',    to: 'static_pages#search'
-  # match '/search',    to: 'drugs#search'
+  match 'drugs/print',  to: 'drugs#print'
 
   root to:'drugs#index'
   # The priority is based upon order of creation:
