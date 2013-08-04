@@ -27,9 +27,24 @@ header {
   @extend .table-striped;
   @extend .table-condensed;
   
+  table-layout: fixed;
+  
   td{
     border-top: 3px solid #DDDDDD;
   }
+  
+  td.stores{
+    width: 100px;
+  }
+  
+  th{
+    width: auto;
+  }
+  
+  #stores_col{
+   width: 100px;
+  }
+  
   
 }
 div.dataTables_filter{
@@ -60,25 +75,29 @@ div.dataTables_length{
 
 
 
-#stores_col{
-  width: 100px;
-}
+
 
 
 
 .store-btns{
+  
+  button.show-options{
+    width: 100%;
+  }
+  
   button.Walmart{
-  @extend .btn, .btn-primary;
-  width: 100%;
+    @extend .btn, .btn-primary;
   }
 
   button.Target{
     @extend .btn, .btn-danger;
-    width: 100%;
   }
+  
   button.duration{
     @extend .hidden;
     width:50%;
+    line-height: 22px;
+    padding:4px 0px 4px 0px;
   }
 }
 

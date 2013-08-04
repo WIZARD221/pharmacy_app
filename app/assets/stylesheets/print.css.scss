@@ -1,17 +1,24 @@
 @import "bootstrap";
 
-table{
-  @extend .table;
-  .store{
-    display: none;
-  }
-  
-  width: 50%;
-}
 
-.table-name{
-}
 
 div.drug-list{
   @extend .offset2;
+  
+  table{
+    @extend .table;
+    .store{
+      display: none;
+    }
+  
+    width: 50%;
+  }
+
+  .table-name{
+  }
+}
+
+.btn-group
+{
+  display:block;
 }

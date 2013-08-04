@@ -1,7 +1,7 @@
 function addToCart(name, quantity, price, store){
 	var itemList = $("table."+store);
-	var item = "<tr class='cart-item'><td class='name'>"+name+"</td><td class='quantity'>"+quantity+"</td><td class='price'>"+price+"</td><td display='none' class='store hidden'>" + store + "</td><td class='options'><button class='remove-button'" + 
-			   "onClick=\"removeFromCart(this,'"+ store + "'," + price + ")\">X</button></td></tr>";
+	var item = "<tr class='cart-item'><td class='name'>"+name+"</td><td class='quantity'>"+quantity+"</td><td class='price'>"+price+"</td><td display='none' class='store hidden'>" + store + "</td><td class='options'><button class=' btn remove-button'" + 
+			   "onClick=\"removeFromCart(this,'"+ store + "'," + price + ")\"><i class='icon-remove'></i></button></td></tr>";
 	$(itemList).append(item);
 	incCartItems(store);
 	$("p." + store).show();
