@@ -105,12 +105,6 @@ function createShoppingCartJson(){
 	$("#shopping_cart input#drugList").val(JSON.stringify(shoppingCartList));
 }
 
-// function createShoppingCartJson(){
-	// var shoppingCartList = {"stores":[{"name":"Walmart"},{"name":"Target"}]};
-// 	
-	// $("#shopping_cart input#drugList").val(shoppingCartList);
-// }
-
 
 
 

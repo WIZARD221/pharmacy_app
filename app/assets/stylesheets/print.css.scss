@@ -22,3 +22,12 @@ div.drug-list{
 {
   display:block;
 }
+
+div#total{
+  @extend .offset2;
+  
+  p{
+    font-size: 24.5px;
+    display: inline;
+  }
+}

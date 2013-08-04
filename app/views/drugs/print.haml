@@ -7,10 +7,13 @@
         %th.name Name
         %th.quantity Quantity
         %th.price Price
+#total
+  %p Total:
+  %p#total_price
 %table#temp_table
   - @drugList.each do |drug|
     %tr.item
       %td.name=drug["name"]
       %td.quantity=drug["quantity"]
-      %td.price=drug["price"]
+      %td.price=drug["price"] + '$'
       %td.store=drug["store"]
