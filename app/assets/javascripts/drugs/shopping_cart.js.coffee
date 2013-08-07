@@ -65,6 +65,7 @@
       "drugs":[] 
       "stores":[]
     cartItems = $ "div#shopping_cart tr.cart-item"
+    stores = []
     
     for item in cartItems
       drugName = $(item).find(".name")[0].innerHTML
@@ -77,13 +78,10 @@
         "quantity":quantity
         "price":price
         "store": store
-    
-    stores = $ "p.store"
-    numStores = stores.length
-    
-    for store in stores
-      storeName = store.innerHTML
-      shoppingCartList.stores.push "name":storeName
+      
+       if stores.indexOf(store) == -1
+         stores.push(store)
+         shoppingCartList.stores.push "name":store
     
     $("#shopping_cart input#drugList").val(JSON.stringify shoppingCartList )
   
