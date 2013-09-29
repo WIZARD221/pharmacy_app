@@ -34,12 +34,16 @@ end
 
 
 
-# group :test do
-  # gem 'capybara'
-# end
+group :test do
+  gem 'capybara'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner', '<= 1.0.1'
+  gem 'selenium-webdriver'
+end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 # To use ActiveModel has_secure_password

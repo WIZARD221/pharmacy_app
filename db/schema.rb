@@ -14,16 +14,16 @@
 ActiveRecord::Schema.define(:version => 20130527170708) do
 
   create_table "drugs", :force => true do |t|
-    t.string   "generic_name"
-    t.string   "medical_name"
-    t.string   "form"
-    t.string   "conditions"
-    t.integer  "thirty_day_price"
-    t.integer  "thirty_day_quantity"
-    t.integer  "ninety_day_price"
-    t.integer  "ninety_day_quantity"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.string    "generic_name"
+    t.string    "medical_name"
+    t.string    "form"
+    t.string    "conditions"
+    t.integer   "thirty_day_price"
+    t.integer   "thirty_day_quantity"
+    t.integer   "ninety_day_price"
+    t.integer   "ninety_day_quantity"
+    t.timestamp "created_at",          :null => false
+    t.timestamp "updated_at",          :null => false
   end
 
   create_table "drugs_stores", :id => false, :force => true do |t|
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(:version => 20130527170708) do
   add_index "drugs_stores", ["drug_id", "store_id"], :name => "index_drugs_stores_on_drug_id_and_store_id"
 
   create_table "stores", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
 end
