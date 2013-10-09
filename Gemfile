@@ -13,7 +13,7 @@ gem 'json'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'pg'
   gem 'rspec-rails'
   gem 'pdf-reader'
   gem 'taps'
