@@ -1,0 +1,7 @@
+@import "bootstrap";
+
+p.disclaimer{
+  @extend .span12;
+  @extend .offset3;
+  font-size: 12px, bold;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  <title><%= yield(:title) %></title>
+	  <title>Pharmacy Home</title>
 	  <%= stylesheet_link_tag    "application", :media => "all" %>
 	  <%= javascript_include_tag "application" %>
 	  <%= csrf_meta_tags %>
@@ -11,7 +11,7 @@
 		<%= yield %>
 		<%= debug(params) if Rails.env.development? %>
 	
-	
+		<%= render 'layouts/footer' %>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
 	</body>

@@ -61,29 +61,33 @@
       storeNumItems.html(parseInt(storeNumItemsVal) - 1)
   
   window.createShoppingCartJson = ->
-    shoppingCartList = 
-      "drugs":[] 
-      "stores":[]
-    cartItems = $ "div#shopping_cart tr.cart-item"
-    stores = []
-    
-    for item in cartItems
-      drugName = $(item).find(".name")[0].innerHTML
-      quantity = $(item).find(".quantity")[0].innerHTML
-      price = $(item).find(".price")[0].innerHTML
-      store = $(item).find("td.store")[0].innerHTML
+    numItems = $("p#num-items")[0].innerHTML
+    if numItems != "empty"
+      cartItems = $ "div#shopping_cart tr.cart-item"
+      shoppingCartList = 
+        "drugs":[] 
+        "stores":[]
+      stores = []
       
-      shoppingCartList.drugs.push
-        "name":drugName, 
-        "quantity":quantity
-        "price":price
-        "store": store
+      for item in cartItems
+        drugName = $(item).find(".name")[0].innerHTML
+        quantity = $(item).find(".quantity")[0].innerHTML
+        price = $(item).find(".price")[0].innerHTML
+        store = $(item).find("td.store")[0].innerHTML
+        
+        shoppingCartList.drugs.push
+          "name":drugName, 
+          "quantity":quantity
+          "price":price
+          "store": store
+        
+         if stores.indexOf(store) == -1
+           stores.push(store)
+           shoppingCartList.stores.push "name":store
       
-       if stores.indexOf(store) == -1
-         stores.push(store)
-         shoppingCartList.stores.push "name":store
-    
-    $("#shopping_cart input#drugList").val(JSON.stringify shoppingCartList )
+      $("#shopping_cart input#drugList").val(JSON.stringify shoppingCartList )
+    else
+      false
   
   
   

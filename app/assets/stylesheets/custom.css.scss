@@ -175,6 +175,18 @@ div.dataTables_length{
   display: none;
 }
 
+footer{
+  @extend .span12;
+  @extend .offset3;
+  
+  #disclaimer_link{
+  
+  }
+
+  #rights{
+  
+  }  
+}
 
 
 

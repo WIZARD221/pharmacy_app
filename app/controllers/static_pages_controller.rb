@@ -6,5 +6,9 @@ class StaticPagesController < ApplicationController
 	def search
 	  
 	end
+	
+	def disclaimer
+	  
+	end
 	  
 end

@@ -1,6 +1,6 @@
 .span3
   #shopping_cart
-    %form{:action => "drugs/print", :method => "post"} 
+    %form{:action => "drugs/print", :method => "post", onSubmit: "return createShoppingCartJson()"} 
       %h5#cart-items.cart-items Shopping Cart Items:
       %p#num-items.num-items empty
       #Walmart-items
@@ -25,6 +25,6 @@
       %p#checkout_sum 0
       %input{type: "hidden", id: "drugList", name: "drugList"}
       %input{type: "hidden", name: "authenticity_token", value: "#{form_authenticity_token}"}
-      %input{class: "btn", type: "submit", id:"print", value: "Print", onClick: "createShoppingCartJson()"}
+      %input{class: "btn", type: "submit", id:"print", value: "Print"}
     
   
