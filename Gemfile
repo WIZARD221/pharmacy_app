@@ -15,6 +15,7 @@ gem 'json'
 group :development, :test do
   gem 'pg'
   gem 'rspec-rails'
+  gem "factory_girl_rails"
   gem 'pdf-reader'
   gem 'taps'
 end
