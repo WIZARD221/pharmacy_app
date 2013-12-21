@@ -14,7 +14,8 @@ gem 'json'
 
 group :development, :test do
   gem 'pg'
-  gem 'rspec-rails'
+  gem 'rspec', '2.11.0'
+  gem 'rspec-rails', '2.11.0'
   gem "factory_girl_rails"
   gem 'pdf-reader'
   gem 'taps'
@@ -37,7 +38,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', '<= 1.0.1'
   gem 'selenium-webdriver'
 end
