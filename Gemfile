@@ -8,6 +8,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'nokogiri'
 gem 'json'
+gem 'newrelic_rpm'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -19,6 +20,9 @@ group :development, :test do
   gem "factory_girl_rails"
   gem 'pdf-reader'
   gem 'taps'
+  gem 'execjs'
+  gem 'therubyracer'
+  gem 'pry'
 end
 
 
