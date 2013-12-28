@@ -19,6 +19,9 @@ group :development, :test do
   gem "factory_girl_rails"
   gem 'pdf-reader'
   gem 'taps'
+  gem 'execjs'
+  gem 'therubyracer'
+  gem 'pry'
 end
 
 
