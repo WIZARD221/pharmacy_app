@@ -7,11 +7,11 @@ class DrugsController < ApplicationController
   end
   
   def index
-    @drugs = Drug.all(:include => :stores)
+    @drugs = Drug.includes(:stores)
   end
   
   def show
-    @drug = Drug.find(params[:id])
+    @drug = Drug.find_by(id: params[:id])
   end
   
   def print
