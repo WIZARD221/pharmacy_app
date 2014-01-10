@@ -20,9 +20,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem 'pdf-reader'
   gem 'taps'
-  gem 'execjs'
-  gem 'therubyracer'
-  gem 'pry'
+
 end
 
 
@@ -31,6 +29,9 @@ end
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
+  gem 'execjs'
+  gem 'therubyracer'
+  gem 'pry'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
