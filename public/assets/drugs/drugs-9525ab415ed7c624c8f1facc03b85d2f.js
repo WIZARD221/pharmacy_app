@@ -1,0 +1,1 @@
+(function(){$(document).ready(function(){return $("#drug_table").dataTable({sDom:'<"top"fl>rt<"bottom"p><"clear">'}),$("button.duration").hide(),$(".hidden").hide()})}).call(this);
