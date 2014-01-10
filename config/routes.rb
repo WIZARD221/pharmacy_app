@@ -1,7 +1,7 @@
 PharmacyApp::Application.routes.draw do
   resources :drugs
-  match 'drugs/print',  to: 'drugs#print'
-  match '/disclaimer', to: 'static_pages#disclaimer'
+  get 'drugs/print',  to: 'drugs#print'
+  get '/disclaimer', to: 'static_pages#disclaimer'
 
   root to:'drugs#index'
   # The priority is based upon order of creation:

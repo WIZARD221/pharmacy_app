@@ -2,14 +2,18 @@ source 'http://rubygems.org'
 
 gem 'rails', '4.0.2'
 gem 'jquery-rails'
-gem 'bootstrap-sass'
 gem 'haml'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
 gem 'nokogiri'
 gem 'json'
 gem 'newrelic_rpm'
-
+gem 'turbolinks'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'execjs'
+gem 'therubyracer'
+gem 'pry'
+gem 'uglifier'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -22,24 +26,6 @@ group :development, :test do
   gem 'taps'
 
 end
-
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'execjs'
-  gem 'therubyracer'
-  gem 'pry'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier'
-end
-
-
 
 group :test do
   gem 'capybara'
