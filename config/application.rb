@@ -14,6 +14,7 @@ if defined?(Bundler)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
+config.assets.initialize_on_precompile = false
 
 module PharmacyApp
   class Application < Rails::Application
