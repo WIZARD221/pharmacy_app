@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.16'
+gem 'rails', '4.0.2'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'haml'
