@@ -14,6 +14,7 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'pry'
 gem 'uglifier'
+gem "activeresource", "~> 4.0.0"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
