@@ -1,17 +1,7 @@
-%tr{:id => "drug#{drug.id}"}
-  %td.name= drug.generic_name
-  %td.form= drug.form
-  %td.conditions= drug.conditions
-  %td.thirty_day_price= "#{drug.thirty_day_price}$"
-  %td.thirty_day_quantity= drug.thirty_day_quantity
-  %td.ninety_day_price= "#{drug.ninety_day_price}$"
-  %td.ninety_day_quantity= drug.ninety_day_quantity
-  %td.stores
-    - drug.stores.each do |store|
-      .store-btns{id: "#{drug.id}", class: "#{store.name}"}
-        %button{:class => "show-options #{store.name}", :id => "#{drug.id}",:onClick => "showBuyingOptions(#{drug.id}, '#{store.name}')"}= store.name
-        .btn-group
-          %button.duration{id:"#{drug.id}", :class => "#{store.name}",:onClick => "addToCart('#{drug.generic_name}','#{drug.thirty_day_quantity}','#{drug.thirty_day_price}','#{store.name}')"} 30 Day
-          %button.duration{id:"#{drug.id}", :class => "#{store.name}",:onClick => "addToCart('#{drug.generic_name}','#{drug.ninety_day_quantity}','#{drug.ninety_day_price}','#{store.name}')"} 90 Day
-    
-    
+.panel.panel-default
+  .panel-heading
+    %h4.panel-title
+      %a{ "data-toggle" => "collapse", "data-parent" => "#drug-list", :href => "#drug#{drug.id}"}  
+        = drug.generic_name
+  .panel-collapse.collapse{id:"drug#{drug.id}"}
+    .panel-body= drug.form

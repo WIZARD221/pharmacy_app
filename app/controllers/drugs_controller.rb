@@ -7,7 +7,7 @@ class DrugsController < ApplicationController
   end
   
   def index
-    @drugs = Drug.includes(:stores)
+    @drugs = Drug.paginate(page: params[:page], per_page: 15)
   end
   
   def show
