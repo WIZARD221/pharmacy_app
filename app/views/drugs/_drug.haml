@@ -1,7 +1,10 @@
 .panel.panel-default
   .panel-heading
-    %h4.panel-title
-      %a{ "data-toggle" => "collapse", "data-parent" => "#drug-list", :href => "#drug#{drug.id}"}  
-        = drug.generic_name
-  .panel-collapse.collapse{id:"drug#{drug.id}"}
-    .panel-body= drug.form
+    %h4.panel-title= drug.generic_name
+    %button.info-button{ "data-toggle" => "collapse", "data-parent" => "#drug-list", :href => "#drug#{drug.id}-info"} Info
+    %button.stores-button{ "data-toggle" => "collapse", "data-parent" => "#drug-list", :href => "#drug#{drug.id}-stores"} Stores
+    %button.add-to-cart-button Cart
+  .panel-collapse.collapse{id:"drug#{drug.id}-stores"}
+    .panel-body= render partial:'drug_stores_table', locals: {drug: drug}
+  .panel-collapse.collapse{id:"drug#{drug.id}-info"}
+    .panel-body= render partial:'drug_info_table', locals: {drug: drug}
