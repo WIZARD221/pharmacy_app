@@ -16,6 +16,7 @@ gem 'pry'
 gem 'uglifier'
 gem 'bootstrap-sass'
 gem "activeresource", "~> 4.0.0"
+gem "searchkick"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -26,6 +27,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem 'pdf-reader'
   gem 'taps'
+  gem 'pry-debugger'
 
 end
 
