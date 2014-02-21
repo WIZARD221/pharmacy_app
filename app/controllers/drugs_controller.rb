@@ -3,11 +3,10 @@ class DrugsController < ApplicationController
   end
   
   def search
-    
   end
   
   def index
-    @drugs = Drug.paginate(page: params[:page], per_page: 15)
+    @drugs = Drug.includes(:stores).paginate(page: params[:page], per_page: 15).order('id ASC')
   end
   
   def show

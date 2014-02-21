@@ -15,69 +15,35 @@ header {
 	
 }
 
-#search_form{
-  margin-left: 44px;
-}
+/*drug store info table*/
 
-/*drug data table*/
-
-#drug_table{
+table.drug-stores-table{
   @extend .table;
-  @extend .table-bordered;
-  @extend .table-striped;
   @extend .table-condensed;
-  
-  table-layout: fixed;
-  
-  td{
-    border-top: 3px solid #DDDDDD;
-  }
-  
-  td.stores{
-    width: 100px;
-  }
-  
-  th{
-    width: auto;
-  }
-  
-  #stores_col{
-   width: 100px;
-  }
-  
-  
-}
-div.dataTables_filter{
-  
-  display:inline-block;
-  input{
-    @extend .search-query;
-    @extend .input-long; 
-  }
+  @extend .table-striped; 
 }
 
-div.dataTables_length{
-  @extend .offset1;
-  display:inline-block;
-  select{
-    border-radius: 15px 15px 15px 15px;
-    width: auto;
-  }
+table.drug-info-table{
+  @extend .table;
+  @extend .table-condensed;
+  @extend .table-striped; 
 }
 
-#drug_table_previous{
-  @extend .btn; 
-}
-
-#drug_table_next{
+button{
   @extend .btn;
 }
 
+button.info-button{
+  @extend .btn-info;
+}
 
+button.stores-button{
 
+}
 
+button.add-to-cart-button{
 
-
+}
 
 .store-btns{
   
@@ -100,6 +66,16 @@ div.dataTables_length{
     padding:4px 0px 4px 0px;
   }
 }
+
+#search_form{
+  @extend navbar-form;
+}
+
+
+
+
+
+
 
 /*shopping cart*/
 

@@ -1,0 +1,7 @@
+%table.drug-stores-table
+  %thead
+    %th Store
+    %th Price
+  %tbody
+    - drug.stores.each do |store|
+      = render partial: 'drug_store_row', locals: {drug: drug, store: store}
