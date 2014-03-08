@@ -3,7 +3,7 @@ class DrugsController < ApplicationController
   end
   
   def search
-    @drugs = Drug.search(params[:search], fields: [{generic_name: :word_start}], page: params[:page], per_page: 3)
+    @drugs = Drug.search(params[:query], fields: [{generic_name: :word_start}], page: params[:page], per_page: 3)
     render :index
   end
   
@@ -14,6 +14,11 @@ class DrugsController < ApplicationController
   # def show
   #   @drug = Drug.find_by(id: params[:id])
   # end
+
+  def autocomplete
+    binding.pry
+    render json: Drug.search(params[:query], autocomplete: true, limit: 6).map(&:generic_name)
+  end
   
   def print
     drugJson = JSON.parse(params[:drugList])

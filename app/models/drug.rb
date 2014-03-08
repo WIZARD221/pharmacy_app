@@ -6,7 +6,7 @@ class Drug < ActiveRecord::Base
   validates :conditions, presence: true
 
 
-  searchkick word_start: [:generic_name]
+  searchkick word_start: [:generic_name], autocomplete: [:generic_name]
 
 
   

@@ -1,8 +1,13 @@
 PharmacyApp::Application.routes.draw do
-  resources :drugs
+  resources :drugs do
+    collection do
+      post :import
+      get  :autocomplete
+      get  :search
+    end
+  end
   get 'drugs/print',  to: 'drugs#print'
   get '/disclaimer',  to: 'static_pages#disclaimer'
-  get 'search', to: 'drugs#search'
   root to:'drugs#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
