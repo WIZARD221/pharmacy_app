@@ -1,7 +1,6 @@
 PharmacyApp::Application.routes.draw do
   resources :drugs do
     collection do
-      post :import
       get  :autocomplete
       get  :search
     end

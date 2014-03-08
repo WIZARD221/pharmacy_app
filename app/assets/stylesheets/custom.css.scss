@@ -67,15 +67,6 @@ button.add-to-cart-button{
   }
 }
 
-#search_form{
-  @extend navbar-form;
-}
-
-
-
-
-
-
 
 /*shopping cart*/
 
@@ -149,19 +140,6 @@ button.add-to-cart-button{
 
 .hidden{
   display: none;
-}
-
-footer{
-  @extend .span12;
-  @extend .offset3;
-  
-  #disclaimer_link{
-  
-  }
-
-  #rights{
-  
-  }  
 }
 
 

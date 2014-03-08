@@ -16,7 +16,6 @@ class DrugsController < ApplicationController
   # end
 
   def autocomplete
-    binding.pry
     render json: Drug.search(params[:query], autocomplete: true, limit: 6).map(&:generic_name)
   end
   
