@@ -3,5 +3,4 @@
     %th Conditions
     %th Form
   %tbody
-    - drug.stores.each do |store|
-      = render partial: 'drug_info_row', locals: {drug: drug, store: store}
+    = render partial: 'drug_info_row', locals: {drug: drug}
